@@ -1,17 +1,16 @@
 <template>
-<div>
+<div>   <h3>Test</h3>
     <v-btn @click="dialog = true" color="success">text</v-btn>
     <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
         <v-card>
             <v-card-title>
                 Test <v-spacer></v-spacer>
-                <v-btn @click="(form = {})&&(dialog=false)" class="rounded-pill" color="error">X</v-btn>
+                <v-btn @click="(form = {})&&(dialog=false)" color="success">text</v-btn>
             </v-card-title>
             <v-card-text>
                 <form @submit.prevent="(form.id)? updateData() : saveData()">
                     <v-text-field label="name" v-model="form.name" />
-                    <v-text-field label="type" v-model="form.type" />
-                    <v-text-field label="value" v-model="form.value" />
+                    <v-text-field label="detail" v-model="form.detail" />
                     <v-btn type="submit">Save</v-btn>
                     <v-btn @click="deleteData()">delete</v-btn>
                 </form>
@@ -19,12 +18,10 @@
         </v-card>
     </v-dialog>
     <div @click="(form = list)&&(dialog=true)" v-for="list,i in lists" :key="i">
-        <Core-Menu icon="/medical-report.png" text="การเงิน"></Core-Menu>
+        <Core-Menu></Core-Menu>
     </div>
-    <pre>{{lists}}</pre>
-</div>
- 
 
+</div>
 </template>
 
 <script lang="ts">
@@ -40,21 +37,21 @@ import { Auth } from '@/vuexes/auth'
     components: {},
 })
 export default class MyComponent extends Vue {
+
     lists: any = []
     dialog: boolean = false
     form: any = {}
 
     async getEnv() {
-        this.lists = await Core.getHttp(`/api/v1/farmer/income`)
+        this.lists = await Core.getHttp(`/api/v1/tool/knoeledge/`)
     }
 
     async created() {
         await this.getEnv();
-
     }
 
     async saveData() {
-        let save = await Core.postHttp(`/api/v1/farmer/income`, this.form)
+        let save = await Core.postHttp(`/api/v1/tool/knoeledge/`, this.form)
         if (save.id) {
             alert('success')
             await this.getEnv();
@@ -63,7 +60,7 @@ export default class MyComponent extends Vue {
     }
 
     async updateData() {
-        let save = await Core.putHttp(`/api/v1/farmer/income${this.form.id}/`, this.form)
+        let save = await Core.putHttp(`/api/v1/tool/knoeledge/${this.form.id}/`, this.form)
         if (save.id) {
             alert('success')
             await this.getEnv();
@@ -72,9 +69,9 @@ export default class MyComponent extends Vue {
     }
 
     async deleteData() {
-        let check = confirm('are you sure')
+        let check = confirm('a u s')
         if (check) {
-            await Core.deleteHttp(`/api/v1/farmer/income/${this.form.id}/`)
+            await Core.deleteHttp(`/api/v1/tool/knoeledge/${this.form.id}/`)
             alert('success')
             await this.getEnv();
             this.dialog = false;
