@@ -1,24 +1,27 @@
 <template>
 <div>
-    <v-btn @click="dialog = true" color="success">text</v-btn>
+    <!-- <v-btn @click="dialog = true" color="success">text</v-btn> -->
     <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
         <v-card>
             <v-card-title>
-                Test <v-spacer></v-spacer>
-                <v-btn @click="(form = {})&&(dialog=false)" color="success">text</v-btn>
+                <h2>{{form.name}}</h2>
+                 <v-spacer></v-spacer> 
+                 <v-btn @click="(form = {}) && (dialog = false)" small fab color="error">X</v-btn>
             </v-card-title>
             <v-card-text>
-                <form @submit.prevent="(form.id)? updateData() : saveData()">
-                    <v-text-field label="name" v-model="form.name" />
-                    <v-text-field label="detail" v-model="form.detail" />
-                    <v-btn type="submit">Save</v-btn>
-                    <v-btn @click="deleteData()">delete</v-btn>
-                </form>
+                <img v-if="form.image" :src="form.image" alt="">
+                <p class="pt-4 text-base text-black">{{form.detail}}</p> <br><br>
+                <img v-if="form.image1" :src="form.image1" alt=""><br>
+                <img v-if="form.image2" :src="form.image2" alt=""><br>
+                <img v-if="form.image3" :src="form.image3" alt="">
+                <br>
+                <h3>สร้างเมื่อ : {{convertDate(form.created_at)}}</h3>
+             <br><br>
             </v-card-text>
         </v-card>
     </v-dialog>
     <div @click="(form = list)&&(dialog=true)" v-for="list,i in lists" :key="i">
-        <Core-Menu></Core-Menu>
+        <Core-Menu :name="list.name" :text="convertDate(list.created_at)"></Core-Menu>
     </div>
 
 </div>
@@ -32,6 +35,7 @@ import {
 } from "nuxt-property-decorator"
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+import { Web } from '@/vuexes/web'
 @Component({
 
     components: {},
@@ -77,7 +81,9 @@ export default class MyComponent extends Vue {
             this.dialog = false;
         }
     }
-
+ convertDate(date:any){
+        return Web.convertDate(date);
+    }
 }
 </script>
 
