@@ -8,7 +8,7 @@
     </v-toolbar>
     <div>
         <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="list.date" icon="/medicine.png" text="โปรแกรมบำรุงรักษา"></Core-Menu>
+            <Core-Menu :name="convertDate(list.created_at)" icon="/medicine.png" text="โปรแกรมบำรุงรักษา"></Core-Menu>
         </div>
     </div>
 
@@ -53,6 +53,7 @@ import {
 import _ from 'lodash'
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+import { Web } from '@/vuexes/web'
 const api = '/api/v1/ox_manager'
 const tool = '/api/v1/tool'
 @Component({
@@ -115,6 +116,11 @@ export default class Food extends Vue {
     async created() {
         await this.getEnv();
     }
+
+    convertDate(date:any){
+        return Web.convertDate(date);
+    }
+
 
 }
 </script>
