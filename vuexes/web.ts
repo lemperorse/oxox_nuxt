@@ -1,6 +1,7 @@
 import {VuexModule, Module, Mutation, Action} from "vuex-class-modules";
 import axios from '@/plugins/axios'
 import _ from "lodash"
+import moment from 'moment'
 
 @Module({generateMutationSetters: true})
 class WebModule extends VuexModule {
@@ -19,6 +20,11 @@ class WebModule extends VuexModule {
   public async offLoad(){
     this.loading = false
   }
+
+  convertDate(date:any) {
+    return moment(date).format('DD/MM/YYYY');
+}
+
 
 
 }
