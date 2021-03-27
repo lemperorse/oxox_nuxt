@@ -31,7 +31,9 @@
             <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" /> 
             <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" />
 
-            <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
+            <v-btn class="w-full" large type='submit' rounded block   color='success'>บันทึก</v-btn>
+
+            <v-btn text  rounded color="red" dark class="mt-4 w-full" @click="deleteData()" >ลบโคขุนนี้</v-btn>
         </form>
     </v-container>
 </div>
@@ -81,8 +83,23 @@ export default class Farm extends Vue {
 
     async saveData() {
         this.form.user = this.user.id
-        let ox = await Core.putHttp(`/api/v1/ox/ox/${this.currentId}/`, this.form)
+        let ox = await Core.putHttp(`/api/v1/ox/ox/${this.currentId}/`, this.form) 
+        if(ox.id){
+            alert('บันทึกข้อมูลสำเร็จ')
+              await this.getEnv();
+              await this.getOxen();
+        }
     }
+
+     async deleteData(){
+         let check = confirm('คุณแน่ใจใช่ไหม')
+        if (check) {
+            alert('ลบข้อมูลแล้ว');
+            let data = await Core.deleteHttp(`/api/v1/ox/ox/${this.form.id}/`)
+            await this.$router.go(-1)
+        }
+    }
+
 
 }
 </script>
