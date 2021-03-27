@@ -1,10 +1,6 @@
 <template>
   <div>
-    {{currentId}}
-
-
-
-
+    {{currentId}}  
   </div>
 </template>
 

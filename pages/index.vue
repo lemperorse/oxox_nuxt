@@ -42,7 +42,14 @@ export default class MyComponent extends Vue {
        text:'คลังข้อมูลความรู้สำหรับการเลี้ยงโคขุน',
        icon:'/044-smart.png',
        route:'/knowledge/'
-     },{
+     },
+     {
+       name:'การเงิน',
+       text:'จัดการข้อมูลรายรับรายจ่าย',
+       icon:'/wallet.png',
+       route:'/money/'
+     },
+     {
        name:'รายงาน',
        text:'ข้อมูลสรุปรายระเอียดต่างๆ',
        icon:'/business-report.png',

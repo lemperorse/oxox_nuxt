@@ -1,60 +1,59 @@
 <template>
- <div>
-   <v-app  id="inspire">
-     <v-app-bar v-if="response"  app flat color="blue">
-       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-       <v-spacer></v-spacer>
+<div>
+    <v-app id="inspire">
+        <v-app-bar v-if="response" app flat color="blue">
+            <v-app-bar-nav-icon dark></v-app-bar-nav-icon>
+            <v-spacer></v-spacer>
 
-       <v-spacer></v-spacer>
-       <v-app-bar-nav-icon @click="logout()"></v-app-bar-nav-icon>
-     </v-app-bar>
-     <v-main  >
-  <Core-Loading />
-       <Core-City />
-       <Nuxt />
-     </v-main>
+            <v-spacer></v-spacer>
+            <v-icon @click="logout()" dark>
+                mdi-logout
+            </v-icon>
+            <!-- <v-app-bar-nav-icon @click="logout()"></v-app-bar-nav-icon> -->
+        </v-app-bar>
+        <v-main>
+            <Core-Loading />
+            <Core-City />
+            <Nuxt />
+        </v-main>
 
-   </v-app>
+    </v-app>
 
-
-
- </div>
+</div>
 </template>
 
 <script lang="ts">
 import {
-  Component,
-  Vue,
-  Watch,
+    Component,
+    Vue,
+    Watch,
 } from "nuxt-property-decorator"
-import {Auth} from '@/vuexes/auth'
+import { Auth } from '@/vuexes/auth'
 @Component({
-  components: {   },
+    components: {},
 })
 export default class Layout extends Vue {
 
+    user: any = null
+    response: boolean = false;
+    async created() {
+        await Auth.checkToken();
+        this.user = await Auth.setUser();
+        await this.checkUser();
+        this.response = (this.user.id) ? true : false;
+    }
 
-  user:any = null
-  response:boolean = false;
-  async created() {
-    await Auth.checkToken();
-    this.user =  await Auth.setUser();
-    await this.checkUser();
-    this.response = (this.user.id)?true:false;
-  }
+    async logout() {
+        await Auth.logout();
+        await location.reload();
+    }
 
-  async logout(){
-    await Auth.logout();
-    await location.reload();
-  }
-
-  async checkUser(){
-      let user = await Auth.getUser();
-      if(!user.id){
-        await this.$router.replace(`/auth/login`)
-      }
-  }
-
+    async checkUser() {
+        let user = await Auth.getUser();
+        if (!user.id) {
+            await this.$router.replace(`/auth/login`)
+        }
+    }
 
 }
 </script>
