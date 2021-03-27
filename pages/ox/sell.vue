@@ -4,7 +4,7 @@
         <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
         <v-spacer></v-spacer>
         <form>
-          ชื่อควาย : {{form.name}}
+          ชื่อโค : {{form.name}}
           <!-- {{currentId}} -->
         </form>
         

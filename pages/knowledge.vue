@@ -1,6 +1,10 @@
 <template>
 <div>
     <!-- <v-btn @click="dialog = true" color="success">text</v-btn> -->
+    <v-card-title class="m-1" primary-title>
+        <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
+        <h2 class="ml-2 text-xl font-bold text-blue-400">องค์ความรู้</h2> 
+    </v-card-title>
     <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
         <v-card>
             <v-card-title>

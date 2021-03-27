@@ -12,14 +12,14 @@
     </div>
 
     <v-bottom-sheet v-model="dialog">
-        <v-sheet class="text-center" height="200px">
+        <v-sheet class="text-center" height="250px">
             <v-btn large class="mt-6" text color="primary" >
                 <span class="text-xl font-bold">การจัดการ</span>
             </v-btn>
             <div class="py-3 flex flex-col w-full p-4">
-                 <v-btn color="primary" outlined  class="m-2" @click="$router.replace( {name:'ox-sell',params: {id: form.id}} )"  >ดูข้อมูลโค</v-btn>
-                 <v-btn color="red" outlined class="m-2" @click="updateData()"  >ยกเลิกการจำหน่าย</v-btn>
-                 <v-btn color="red" dark class="m-2" @click="deleteData()" >ลบโคขุนนี้</v-btn>
+                 <v-btn color="primary" outlined rounded  class="m-2" @click="$router.replace( {name:'ox-sell',params: {id: form.id}} )"  >ดูข้อมูลโค</v-btn>
+                 <v-btn color="red" outlined rounded class="m-2" @click="updateData()"  >ยกเลิกการจำหน่าย</v-btn>
+                 <v-btn color="red" dark rounded class="m-2" @click="deleteData()" >ลบโคขุนนี้</v-btn>
             </div>
         </v-sheet>
     </v-bottom-sheet>

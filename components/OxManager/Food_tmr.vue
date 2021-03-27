@@ -14,7 +14,7 @@
     <v-dialog fullscreen persistent v-model="dialog">
         <v-card>
             <v-card-title primary-title>
-                >อาหารผสมครบส่วน (TMR)
+                อาหารผสมครบส่วน (TMR)
                  <v-spacer></v-spacer>
                 <v-btn @click="(form = {}) && (dialog = false)" small fab color="error">X</v-btn>
             </v-card-title>
