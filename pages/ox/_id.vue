@@ -71,6 +71,7 @@ export default class Farm extends Vue {
 
     await Web.switchLoad(true);
     await this.getEnv();
+    await Web.switchLoad(false);
 
   }
 
