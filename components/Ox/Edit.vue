@@ -28,10 +28,7 @@
             <v-text-field dense class="p-2" type="number" label="ความยาวลำตัว (เซนติเมตร)" v-model="form.long" />
             <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" />
             <v-text-field dense class="p-2" type="date" label="วัน/เดือน/ปีที่ซื้อ" v-model="form.buy_date" />
-            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" />
-            <v-text-field dense class="p-2" label="สถานะ" v-model="form.status" />
-            <v-text-field dense class="p-2" label="created_at" v-model="form.created_at" />
-            <v-text-field dense class="p-2" label="updated_at" v-model="form.updated_at" />
+            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" /> 
             <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" />
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>

@@ -31,8 +31,7 @@
             <v-text-field dense class="p-2" type="number" label="ความยาวลำตัว (เซนติเมตร)" v-model="form.long" />
             <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" />
             <v-text-field dense class="p-2" type="date" label="วัน/เดือน/ปีที่ซื้อ" v-model="form.buy_date" />
-            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" />
-            <v-text-field dense class="p-2" label="สถานะ" v-model="form.status" /> 
+            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" /> 
             <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc_id" />
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
@@ -87,6 +86,7 @@ export default class Farm extends Vue {
     }
 
     async saveData() {
+        this.form.status = "อยู่ในฟาร์ม";
         this.form.user = this.user.id
         let ox = await Core.postHttp(`/api/v1/ox/ox/`, this.form)
     }
