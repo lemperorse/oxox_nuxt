@@ -1,0 +1,27 @@
+{
+  "name": "test_cattle",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^2.0.1",
+    "@types/lodash": "^4.14.168",
+    "animate.css": "^4.1.1",
+    "axios": "^0.21.1",
+    "core-js": "^3.8.3",
+    "lodash": "^4.17.21",
+    "nuxt": "^2.14.12",
+    "nuxt-property-decorator": "^2.9.1",
+    "vuex-class-modules": "^1.3.0"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.12",
+    "@nuxt/typescript-build": "^2.0.4",
+    "@nuxtjs/vuetify": "^1.11.3"
+  }
+}
