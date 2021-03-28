@@ -15,29 +15,33 @@
         <v-tab-item>
             <Ox-Edit v-if="tab == 0" />
         </v-tab-item>
+         <v-tab>ประสิทธิภาพการผลิต</v-tab>
+        <v-tab-item>
+            <OxManager-TestOx v-if="tab == 1" />
+        </v-tab-item>
         <v-tab>ให้อาหาร</v-tab>
         <v-tab-item>
-            <OxManager-Food v-if="tab == 1"></OxManager-Food>
+            <OxManager-Food v-if="tab == 2"></OxManager-Food>
         </v-tab-item>
         <v-tab>ทำวัคซีน</v-tab>
         <v-tab-item>
-            <OxManager-Vaccine v-if="tab == 2"></OxManager-Vaccine>
+            <OxManager-Vaccine v-if="tab == 3"></OxManager-Vaccine>
         </v-tab-item>
         <v-tab>ถ่ายพยาธิ</v-tab>
         <v-tab-item>
-            <OxManager-Worm v-if="tab == 3"></OxManager-Worm>
+            <OxManager-Worm v-if="tab == 4"></OxManager-Worm>
         </v-tab-item>
         <v-tab>โปรแกรมบำรุง</v-tab>
         <v-tab-item>
-            <OxManager-Maintain v-if="tab == 4"></OxManager-Maintain>
+            <OxManager-Maintain v-if="tab == 5"></OxManager-Maintain>
         </v-tab-item>
         <v-tab>ประวัติการรักษา</v-tab>
         <v-tab-item>
-            <OxManager-Heal v-if="tab == 5"></OxManager-Heal>
+            <OxManager-Heal v-if="tab == 6"></OxManager-Heal>
         </v-tab-item>
         <v-tab>การจำหน่าย</v-tab>
         <v-tab-item>
-            <OxManager-Sell v-if="tab == 6"></OxManager-Sell>
+            <OxManager-Sell v-if="tab == 7"></OxManager-Sell>
         </v-tab-item>
 
     </v-tabs>
