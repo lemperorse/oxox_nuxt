@@ -1,7 +1,7 @@
 <template>
  <div style="background-color:transparent!important;"  >
 
-   <h2 class="text-xl p-4 ">เมนูหลัก</h2>
+   <h2 class="text-xl p-4 font-bold">เมนูหลัก</h2>
    <v-divider class="ml-2 w-11/12"></v-divider>
     <Menu   v-for="menu,index in listPages" :key="index"
        :route="menu.route"   :name="menu.name" :text="menu.text" :icon="menu.icon"></Menu>

@@ -3,7 +3,7 @@
     <div class="flex  ">
       <img class="w-16" :src="icon" alt="">
       <div class="pl-4">
-        <h4 class="text-xl">{{name}}</h4>
+        <h4 class="text-xl font-bold">{{name}}</h4>
         <h3>{{text}}</h3>
       </div>
     </div>
