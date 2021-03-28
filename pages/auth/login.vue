@@ -12,7 +12,7 @@
             <v-text-field required v-model="form.password" type="password" filled label="รหัสผ่าน" rounded></v-text-field>
             <v-btn large color="success" class="w-full" type="submit" rounded>เข้าสู่ระบบ</v-btn>
             <br><br>
-            <v-btn text   @click="$router.push('/auth/login')" large   color="primary" class="w-full font-bold"  >สมัครสมาชิก</v-btn>
+            <v-btn text   @click="$router.push('/auth/register')" large   color="primary" class="w-full font-bold"  >สมัครสมาชิก</v-btn>
           </form>
         </v-card-text>
 
