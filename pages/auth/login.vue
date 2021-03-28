@@ -3,7 +3,8 @@
     <div class="h-screen flex justify-center items-center p-2">
       <v-card class="w-full md:w-1/2 rounded-xl elevation-8">
         <v-card-title>
-          <p class="text-xl font-bold text-green-600">เข้าสู่ระบบ</p>
+          <p class="text-xl font-bold text-green-600">เข้าสู่ระบบ<br> <span class="text-base font-thin">ระบบจัดการโคขุน</span></p>
+          
           <br>
         </v-card-title>
         <v-card-text>

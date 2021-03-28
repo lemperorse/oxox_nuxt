@@ -3,7 +3,8 @@
     <v-card class="w-full md:w-1/2 rounded-xl elevation-8">
         <v-card-title>
           <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
-            ลงทะเบียนเข้าใช้งาน
+            
+            <h2 class="ml-2 text-xl font-bold text-green-600">ลงทะเบียนเข้าใช้งาน </h2>
         </v-card-title>
         <v-card-text>
             <div v-if="errorReg">
