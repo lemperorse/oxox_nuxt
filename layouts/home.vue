@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-app id="inspire"  >
-        <v-app-bar v-if="response" app flat color="blue">
+        <v-app-bar v-if="response" app flat color="bg-tool">
             <!-- <v-app-bar-nav-icon   @click="drawer = !drawer"></v-app-bar-nav-icon> -->
            
             <v-spacer></v-spacer>
@@ -131,5 +131,12 @@ background-size: cover;
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+.bg-tool{
+background-color: #427eff;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23ffffff' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%23427eff' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%235f72ec' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%236f67d9' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23795dc6' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%237f52b3' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%238149a1' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%2380408f' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%237d397e' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%2378326e' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23722c5f' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%236a2751' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23612244' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23581f39' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%234e1c2f' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23431925' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%2339161e' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%232e1317' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23241010' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
 }
 </style>
