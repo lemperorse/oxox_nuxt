@@ -9,7 +9,7 @@
             <v-text-field dense class="p-2" label="เบอร์หู" v-model="form.ear_number" prepend-inner-icon="mdi-ear-hearing" />
             <v-text-field dense class="p-2" label="หมายเลข NID" v-model="form.nid_number" prepend-inner-icon="mdi-numeric" />
             <v-text-field dense class="p-2" label="หมายเลขไมโครชิป" v-model="form.chip_number" prepend-inner-icon="mdi-micro-sd" />
-            <v-text-field dense class="p-2" label="ระดับสายเลือด" v-model="form.blood" prepend-inner-icon="mdi-blood-bag" />
+            <v-text-field dense class="p-2" label="ระดับสายเลือด" v-model="form.blood" prepend-inner-icon="mdi-iv-bag" />
 
             <v-select dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene_id" prepend-inner-icon="mdi-certificate-outline" />
 

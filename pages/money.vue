@@ -20,8 +20,8 @@
                     <v-select :items="[
                         {'text': 'รายรับ' , value:true} ,
                         {'text': 'รายจ่าย' , value:false}   
-                    ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-calendar" />
-                    <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-calendar" />
+                    ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-layers-triple-outline" />
+                    <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>

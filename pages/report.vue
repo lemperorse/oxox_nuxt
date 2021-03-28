@@ -1,20 +1,28 @@
 <template>
 <div v-if="response">
-    <v-tabs  v-model="tab" >
-        <v-tab>
-            โคขุน
-        </v-tab>
-        <v-tab-item>
-            <Report-GraphOx v-if="tab == 0" :raw_xo="raw_xo"></Report-GraphOx> <br><br>
-            <Report-GraphOxWeight v-if="tab == 0"  :raw_xo="raw_xo"></Report-GraphOxWeight>
-        </v-tab-item>
-        <v-tab>
-            การเงิน
-        </v-tab>
-        <v-tab-item>
-            <Report-GrapnIncome  v-if="tab ==1 " ></Report-GrapnIncome>
-        </v-tab-item>
-    </v-tabs>
+    <v-card-title class="m-1" primary-title>
+        <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
+        <h2 class="ml-2 text-xl font-bold text-blue-400">รายงาน</h2>
+    </v-card-title>
+    <v-container>
+        <v-tabs v-model="tab">
+            <v-tab>
+                โคขุน
+            </v-tab>
+            <v-tab-item>
+                <Report-GraphOx v-if="tab == 0" :raw_xo="raw_xo"></Report-GraphOx> <br><br>
+                <Report-GraphOxWeight v-if="tab == 0" :raw_xo="raw_xo"></Report-GraphOxWeight>
+            </v-tab-item>
+            <v-tab>
+                การเงิน
+            </v-tab>
+            <v-tab-item>
+                <Report-GrapnIncome v-if="tab ==1 "></Report-GrapnIncome>
+            </v-tab-item>
+        </v-tabs>
+
+    </v-container>
+
 </div>
 </template>
 
