@@ -5,22 +5,22 @@
     </v-card-title>
     <v-container>
         <form @submit.prevent="saveData()">
-            <v-text-field dense class="p-2" label="ชื่อโค" v-model="form.name" prepend-inner-icon="mdi-cow" />
+            <v-text-field required dense class="p-2" label="ชื่อโค" v-model="form.name" prepend-inner-icon="mdi-cow" />
             <v-text-field dense class="p-2" label="เบอร์หู" v-model="form.ear_number" prepend-inner-icon="mdi-ear-hearing" />
             <v-text-field dense class="p-2" label="หมายเลข NID" v-model="form.nid_number" prepend-inner-icon="mdi-numeric" />
             <v-text-field dense class="p-2" label="หมายเลขไมโครชิป" v-model="form.chip_number" prepend-inner-icon="mdi-micro-sd" />
             <v-text-field dense class="p-2" label="ระดับสายเลือด" v-model="form.blood" prepend-inner-icon="mdi-iv-bag" />
 
-            <v-select dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene_id" prepend-inner-icon="mdi-certificate-outline" />
+            <v-select required dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene_id" prepend-inner-icon="mdi-certificate-outline" />
 
-            <v-select dense class="p-2" :items="choices.gender" item-text="name" item-value="id" label="เพศ" v-model="form.gender_id" prepend-inner-icon="mdi-gender-male-female" />
+            <v-select required dense class="p-2" :items="choices.gender" item-text="name" item-value="id" label="เพศ" v-model="form.gender_id" prepend-inner-icon="mdi-gender-male-female" />
             <v-text-field dense class="p-2" label="เพศอื่นๆ" v-model="form.gender_ect" prepend-inner-icon="mdi-gender-male-female-variant" />
 
             <v-select dense class="p-2" :items="choices.origin" item-text="name" item-value="id" label="แหล่งที่มา" v-model="form.origin_id" prepend-inner-icon="mdi-redhat" />
             <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth_id" prepend-inner-icon="mdi-tooth-outline" />
 
-            <v-text-field dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
-            <v-text-field dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" />
+            <v-text-field required dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
+            <v-text-field required dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" />
             <v-text-field dense class="p-2" type="number" label="อายุ" v-model="form.age_age" prepend-inner-icon="mdi-calendar-heart" />
             <v-text-field dense class="p-2" type="number" label="เดือน" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" />
             <v-text-field dense class="p-2" label="อายุจากการทำนาย" v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
