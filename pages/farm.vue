@@ -17,7 +17,7 @@
 
             <v-text-field dense class="p-2" label="รหัสบัตรประชาชน" v-model="form.personal_id" prepend-inner-icon="mdi-card-account-details-star-outline" />
             <v-text-field dense class="p-2" label="เบอร์โทรศัพท์" v-model="form.tel" prepend-inner-icon="mdi-cellphone" />
-            <v-text-field dense class="p-2" label="ชื่อฟาร์ม" v-model="form.name_farm" prepend-inner-icon="mdi-palm-tree" />
+            <v-text-field dense class="p-2" label="ชื่อฟาร์ม" v-model="form.name_farm" prepend-inner-icon="mdi-barn" />
             <v-text-field dense class="p-2" label="ที่อยู่" v-model="form.address" prepend-inner-icon="mdi-home" />
             <v-text-field dense class="p-2" label="หมู่บ้าน" v-model="form.swine" prepend-inner-icon="mdi-home-group" />
 

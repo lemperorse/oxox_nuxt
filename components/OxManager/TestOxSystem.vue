@@ -2,24 +2,26 @@
 <div class="p-4">
     <h2 class="text-xl font-bold text-yellow-600">{{form.name}}</h2><br>
     <form @submit.prevent="calculate()" >
-   <v-text-field @change="calDate()" required type="date" dense outlined class="p-2" label="วัน/เดือน/ปี" v-model="form.fatten_date"></v-text-field>
-    <v-text-field required type="number" dense outlined class="p-2" label="จำนวนวัน" v-model="form.count"></v-text-field>
-    <v-text-field required type="number" outlined dense class="p-2"  label="น้ำหนักเริ่มขุน (กิโลกรัม)" v-model="form.weight" />
-    <v-text-field required type="number" outlined dense class="p-2"   label="น้ำหนักสิ้นสุดการขุน (กิโลกรัม)" v-model="form.weight_end" />
-    <v-text-field required type="number" outlined dense class="p-2"  label="ปริมาณอาหารทั้งหมดที่ใช้เลี้ยง (กิโลกรัม)" v-model="form.food" />  
-    <v-btn class="w-full"  type="submit" color="success">คำนวณ</v-btn>
+   <v-text-field @change="calDate()" required type="date" dense  class="p-2" label="วัน/เดือน/ปี" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar"></v-text-field>
+    <v-text-field required type="number" dense  class="p-2" label="จำนวนวัน" v-model="form.count" prepend-inner-icon="mdi-calendar-clock"></v-text-field>
+    <v-text-field required type="number"  dense class="p-2"  label="น้ำหนักเริ่มขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+    <v-text-field required type="number"  dense class="p-2"   label="น้ำหนักสิ้นสุดการขุน (กิโลกรัม)" v-model="form.weight_end" prepend-inner-icon="mdi-scale-balance" />
+    <v-text-field required type="number"  dense class="p-2"  label="ปริมาณอาหารทั้งหมดที่ใช้เลี้ยง (กิโลกรัม)" v-model="form.food" prepend-inner-icon="mdi-food" />  
+    <v-btn class="w-full" rounded large  type="submit" color="success">คำนวณ</v-btn>
     </form>
  
     <v-dialog v-model="dialog">
         <v-card>
             <v-card-title primary-title>
-                <h2 class="text-xl text-blue-400 font-bold">คำนวณประสิทธิภาพการผลิต</h2>
+                <p class="text-xl text-blue-400 font-bold mt-4">คำนวณประสิทธิภาพการผลิต</p> 
+                <v-spacer></v-spacer>
+                <v-btn @click="(form = {})&&(dialog=false)" color="error" fab small>x</v-btn> 
             </v-card-title>
             <v-card-text v-if="dialog">
                 <div class="p-4"> 
-                    <v-text-field v-model="data.ADG" outlined  label="การเจริญเติบโตเฉลี่ยต่อวัน (ADG)"></v-text-field>
-                    <v-text-field v-model="data.FCR" outlined  label="การเปลี่ยนอาหารเป็นเนื้อ (FCR)" ></v-text-field> 
-                    <v-text-field v-model="data.FI" outlined  label="อัตราการกินได้ต่อวัน (FI)"></v-text-field> 
+                    <v-text-field v-model="data.ADG" label="การเจริญเติบโตเฉลี่ยต่อวัน (ADG)" prepend-inner-icon="mdi-pan-vertical"></v-text-field>
+                    <v-text-field v-model="data.FCR" label="การเปลี่ยนอาหารเป็นเนื้อ (FCR)" prepend-inner-icon="mdi-food-drumstick-outline"></v-text-field> 
+                    <v-text-field v-model="data.FI" label="อัตราการกินได้ต่อวัน (FI)" prepend-inner-icon="mdi-rice"></v-text-field> 
                 </div>
             </v-card-text>
         </v-card>

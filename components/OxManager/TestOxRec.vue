@@ -1,26 +1,25 @@
 <template>
 <div class="p-4">
     <h2 class="text-xl font-bold text-yellow-600">{{form.name}}</h2><br>
-    <v-text-field dense outlined class="p-2" label="อายุ (ปี)" v-model="form.age_age"></v-text-field>
-    <v-text-field dense outlined class="p-2" label="อายุ (เดือน)" v-model="form.age_month"></v-text-field>
-    <v-text-field outlined dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" />
-    <v-select v-model="chooseKg" dense outlined :items=[0.4,0.6,0.8,1.0] label="ปริมาณอาหารที่ให้"></v-select>
-    <v-btn class="w-full" @click="calculate()" color="success">คำนวณ</v-btn>
+    <v-text-field dense class="p-2" label="อายุ (ปี)" v-model="form.age_age" prepend-inner-icon="mdi-calendar" ></v-text-field>
+    <v-text-field dense class="p-2" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" ></v-text-field>
+    <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale"  />
+    <v-select v-model="chooseKg" dense class="p-2" :items=[0.4,0.6,0.8,1.0] label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance" ></v-select>
+    <v-btn class="w-full" rounded large @click="calculate()" color="success">คำนวณ</v-btn>
     <v-dialog v-model="dialog">
         <v-card>
             <v-card-title primary-title>
-                <h2 class="text-xl text-blue-400 font-bold">คำแนะนำ</h2>
+                <p class="text-xl text-blue-400 font-bold mt-4">คำแนะนำ</p>
+                <v-spacer></v-spacer>
+                <v-btn @click="(form = {})&&(dialog=false)" color="error" fab small>x</v-btn>
             </v-card-title>
             <v-card-text v-if="dialog">
                 <div class="p-4">
-
-                    <v-text-field v-model="chooseKg" outlined  label="ปริมาณอาหารที่ให้"></v-text-field>
-                    <v-text-field v-model="data.g" outlined  label="โปรตีน (%)" ></v-text-field> 
-                    <v-text-field v-model="data.kg" outlined  label="พลังงาน (kcal/kg)"></v-text-field>
-                    <v-text-field v-model="data.cal" outlined  label="แคลเซี่ยม (%)"></v-text-field>
-                    <v-text-field v-model="data.fos" outlined  label="ฟอสฟอรัส (%)"></v-text-field>
-                    
-
+                    <v-text-field v-model="chooseKg"  label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
+                    <v-text-field v-model="data.g"  label="โปรตีน (%)" prepend-inner-icon="mdi-egg-outline"></v-text-field> 
+                    <v-text-field v-model="data.kg"  label="พลังงาน (kcal/kg)" prepend-inner-icon="mdi-rice"></v-text-field>
+                    <v-text-field v-model="data.cal"  label="แคลเซี่ยม (%)" prepend-inner-icon="mdi-bone"></v-text-field>
+                    <v-text-field v-model="data.fos"  label="ฟอสฟอรัส (%)" prepend-inner-icon="mdi-food"></v-text-field>
                 </div>
             </v-card-text>
         </v-card>
