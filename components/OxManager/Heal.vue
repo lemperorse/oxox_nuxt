@@ -20,23 +20,23 @@
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่สังเกต" v-model="form.date_check" />
-                    <v-text-field label="อาการเบื้องต้น" v-model="form.data" />
-                    <v-select :items="choices.group" item-text="name" item-value="id" label="กลุ่มอาการ" v-model="form.group" />
-                    <v-text-field v-if="form.group==7" label="กลุ่มอาการอื่นๆ" v-model="form.group_ect" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่สังเกต" v-model="form.date_check" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field label="อาการเบื้องต้น" v-model="form.data" prepend-inner-icon="mdi-bulletin-board" />
+                    <v-select :items="choices.group" item-text="name" item-value="id" label="กลุ่มอาการ" v-model="form.group" prepend-inner-icon="mdi-google-circles-group" />
+                    <v-text-field v-if="form.group==7" label="กลุ่มอาการอื่นๆ" v-model="form.group_ect" prepend-inner-icon="mdi-google-circles-communities" />
 
-                    <v-select :items="choices.disease" item-text="name" item-value="id" label="โรค" v-model="form.disease" />
-                    <v-text-field v-if="form.disease==4" label="โรคอื่นๆ" v-model="form.disease_ect" />
+                    <v-select :items="choices.disease" item-text="name" item-value="id" label="โรค" v-model="form.disease" prepend-inner-icon="mdi-tilde" />
+                    <v-text-field v-if="form.disease==4" label="โรคอื่นๆ" v-model="form.disease_ect" prepend-inner-icon="mdi-timelapse" />
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่รักษา" v-model="form.date_do" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่รักษา" v-model="form.date_do" prepend-inner-icon="mdi-calendar-alert" />
 
-                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้รักษา" v-model="form.maker" />
-                    <v-text-field v-if="form.maker==4" label="ผู้รักษาอื่นๆ" v-model="form.maker_ect" />
+                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้รักษา" v-model="form.maker" prepend-inner-icon="mdi-human-male" />
+                    <v-text-field v-if="form.maker==4" label="ผู้รักษาอื่นๆ" v-model="form.maker_ect" prepend-inner-icon="mdi-human-male-female" />
 
-                    <v-text-field label="ยาที่รักษา" v-model="form.medicine" />
+                    <v-text-field label="ยาที่รักษา" v-model="form.medicine" prepend-inner-icon="mdi-pill" />
 
-                    <v-select :items="choices.result" item-text="name" item-value="id" label="ผลการรักษา" v-model="form.result" />
-                    <v-text-field v-if="form.result==4" label="ผลการรักษา อื่นๆ" v-model="form.result_ect" />
+                    <v-select :items="choices.result" item-text="name" item-value="id" label="ผลการรักษา" v-model="form.result" prepend-inner-icon="mdi-file-outline" />
+                    <v-text-field v-if="form.result==4" label="ผลการรักษา อื่นๆ" v-model="form.result_ect" prepend-inner-icon="mdi-file-refresh-outline" />
 
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
 

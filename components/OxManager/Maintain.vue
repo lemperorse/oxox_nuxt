@@ -22,17 +22,17 @@
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่บำรุง" v-model="form.date" />
-                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้ทำ" v-model="form.maker" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่บำรุง" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้ทำ" v-model="form.maker" prepend-inner-icon="mdi-human-male" />
 
-                    <v-text-field v-if="form.maker == 3" label="ผู้ทำอื่นๆ" v-model="form.maker_ect" />
+                    <v-text-field v-if="form.maker == 3" label="ผู้ทำอื่นๆ" v-model="form.maker_ect" prepend-inner-icon="mdi-human-male-female" />
 
-                    <v-select :items="choices.items" item-text="name" item-value="id" label="ชนิดยาบำรุง" v-model="form.medicine" />
+                    <v-select :items="choices.items" item-text="name" item-value="id" label="ชนิดยาบำรุง" v-model="form.medicine" prepend-inner-icon="mdi-pill" />
 
-                    <v-text-field v-if="form.medicine == 3" label="ชนิดยาบำรุง อื่นๆ" v-model="form.medicine_ect" />
+                    <v-text-field v-if="form.medicine == 3" label="ชนิดยาบำรุง อื่นๆ" v-model="form.medicine_ect" prepend-inner-icon="mdi-medical-bag" />
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่ผลิต" v-model="form.date_origin" />
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่หมดอายุ" v-model="form.date_expire" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่ผลิต" v-model="form.date_origin" prepend-inner-icon="mdi-calendar-check-outline" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่หมดอายุ" v-model="form.date_expire" prepend-inner-icon="mdi-calendar-clock" />
 
                     <v-btn class="w-full" type='submit' rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>

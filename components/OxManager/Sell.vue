@@ -23,16 +23,16 @@
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่จำหน่าย" v-model="form.date" />
-                    <v-text-field type="number" label="สรุปจำนวนวันที่เลี้ยง" v-model="form.date_count" />
-                    <v-text-field type="number" label="น้ำหนักที่จำหน่าย (กิโลกรัม)" v-model="form.weight" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่จำหน่าย" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field type="number" label="สรุปจำนวนวันที่เลี้ยง" v-model="form.date_count" prepend-inner-icon="mdi-calendar-edit" />
+                    <v-text-field type="number" label="น้ำหนักที่จำหน่าย (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
 
-                    <v-select :items="choices.sell_to" item-text="name" item-value="id" label="ช่องทางการจำหน่าย" v-model="form.sell_to" />
-                    <v-text-field v-if="form.sell_to == 4" label="ช่องทางการจำหน่ายอื่นๆ" v-model="form.sell_to_ect" />
+                    <v-select :items="choices.sell_to" item-text="name" item-value="id" label="ช่องทางการจำหน่าย" v-model="form.sell_to" prepend-inner-icon="mdi-shopping" />
+                    <v-text-field v-if="form.sell_to == 4" label="ช่องทางการจำหน่ายอื่นๆ" v-model="form.sell_to_ect" prepend-inner-icon="mdi-shopping-search" />
 
-                    <v-select :items="choices.sell_type" item-text="name" item-value="id" label="ลักษณะการจำหน่าย" v-model="form.sell_type" />
-                    <v-text-field v-if="form.sell_type == 3" label="ขายตามราคาน้ำหนักซาก" v-model="form.sell_type_ect_weight" />
-                    <v-text-field v-if="form.sell_type == 3" label="เปอร์เซ็นต์เกรดซากระบุ" v-model="form.sell_type_ect_grade" />
+                    <v-select :items="choices.sell_type" item-text="name" item-value="id" label="ลักษณะการจำหน่าย" v-model="form.sell_type" prepend-inner-icon="mdi-charity" />
+                    <v-text-field v-if="form.sell_type == 3" label="ขายตามราคาน้ำหนักซาก" v-model="form.sell_type_ect_weight" prepend-inner-icon="mdi-scale-balance" />
+                    <v-text-field v-if="form.sell_type == 3" label="เปอร์เซ็นต์เกรดซากระบุ" v-model="form.sell_type_ect_grade" prepend-inner-icon="mdi-sack-percent" />
 
                     <v-btn class="w-full" type='submit' rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>

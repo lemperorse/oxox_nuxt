@@ -23,14 +23,14 @@
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่ทำ" v-model="form.date" />
-                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้ทำ" v-model="form.maker" />
+                    <v-text-field type="date" label="วัน/เดือน/ปีที่ทำ" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้ทำ" v-model="form.maker" prepend-inner-icon="mdi-human-male" />
 
-                    <v-text-field v-if="form.maker == 3" label="ผู้ทำอื่นๆ" v-model="form.maker_ect" />
+                    <v-text-field v-if="form.maker == 3" label="ผู้ทำอื่นๆ" v-model="form.maker_ect" prepend-inner-icon="mdi-human-male-female" />
 
-                    <v-select :items="choices.items" item-text="name" item-value="id" label="ชนิดพยาธิ" v-model="form.worm" />
+                    <v-select :items="choices.items" item-text="name" item-value="id" label="ชนิดพยาธิ" v-model="form.worm" prepend-inner-icon="mdi-tilde" />
 
-                    <v-text-field v-if="form.worm == 5" label="ชนิดพยาธิอื่นๆ" v-model="form.worm_ect" />
+                    <v-text-field v-if="form.worm == 5" label="ชนิดพยาธิอื่นๆ" v-model="form.worm_ect" prepend-inner-icon="mdi-timelapse" />
 
                     <v-btn class="w-full" type='submit' rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" rounded large color='red'>ลบ</v-btn>

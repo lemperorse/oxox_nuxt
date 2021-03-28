@@ -15,13 +15,13 @@
             </v-card-title>
             <v-card-text>
                 <form @submit.prevent="(form.id)? updateData() : saveData()">
-                    <v-text-field label="วันที่" type="date" v-model="form.date" />
-                    <v-text-field label="ชื่อ" v-model="form.name" />
+                    <v-text-field label="วันที่" type="date" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field label="ชื่อ" v-model="form.name" prepend-inner-icon="mdi-card-account-details-star-outline" />
                     <v-select :items="[
                         {'text': 'รายรับ' , value:true} ,
                         {'text': 'รายจ่าย' , value:false}   
-                    ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" />
-                    <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" />
+                    ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-calendar" />
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>
@@ -40,7 +40,7 @@
                 <div class="rounded-xl shadow-2xl border-b-4 border-green-500 p-4">
                     <span class="font-bold text-green-600">รายรับ : </span>
                     <v-spacer></v-spacer>
-                    <span class="font-bold">{{data.income}}</span>
+                    <span class="font-bold ">{{data.income}}</span>
                 </div>
             </v-col>
             <v-col>

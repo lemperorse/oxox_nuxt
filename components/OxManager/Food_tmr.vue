@@ -20,15 +20,15 @@
             </v-card-title>
             <v-card-text>
                 <form @submit.prevent="(form.id)?updateData():saveData()"> 
-                    <v-text-field required type="date" label="วัน/เดือน/ปีที่ให้" v-model="form.date" />
-                     <v-text-field required type="number" label="การให้อาหาร (TMR) ครั้งที่" v-model="form.tmr"  /> 
+                    <v-text-field required type="date" label="วัน/เดือน/ปีที่ให้" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                     <v-text-field required type="number" label="การให้อาหาร (TMR) ครั้งที่" v-model="form.tmr" prepend-inner-icon="mdi-numeric" /> 
       
-                    <v-text-field required type="number" label="อายุ (ปี)" v-model="form.age_year" />
-                    <v-text-field required type="number" label="อายุ (เดือน)" v-model="form.age_month" />
-                    <v-text-field required type="number" label="น้ำหนัก (กก.)" v-model="form.weight" />
-                      <v-select :items="['แบบเต็มที่','แบบจำกัด']" item-text="name" item-value="id" label="ระบบการให้อาหาร" v-model="form.fedding_system" />
+                    <v-text-field required type="number" label="อายุ (ปี)" v-model="form.age_year" prepend-inner-icon="mdi-calendar-heart" />
+                    <v-text-field required type="number" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-clock" />
+                    <v-text-field required type="number" label="น้ำหนัก (กก.)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+                      <v-select :items="['แบบเต็มที่','แบบจำกัด']" item-text="name" item-value="id" label="ระบบการให้อาหาร" v-model="form.fedding_system" prepend-inner-icon="mdi-scale-balance" />
            
-                      <v-text-field label="อาหารผสมครบส่วน (TMR)  (กก./ตัว/วัน)" v-model="form.tmr_mix"  />   
+                      <v-text-field label="อาหารผสมครบส่วน (TMR)  (กก./ตัว/วัน)" v-model="form.tmr_mix" prepend-inner-icon="mdi-scale-bathroom" />   
                     <v-btn rounded class="w-full" type="submit" large color='success'>บันทึก</v-btn>
                      <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>

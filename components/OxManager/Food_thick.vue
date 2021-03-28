@@ -20,16 +20,16 @@
             </v-card-title>
             <v-card-text>
                 <form @submit.prevent="(form.id)?updateData():saveData()"> 
-                    <v-text-field required type="date" label="วัน/เดือน/ปีที่ให้" v-model="form.date" />
-                    <v-text-field required type="number" label="อายุ (ปี)" v-model="form.age_year" />
-                    <v-text-field required type="number" label="อายุ (เดือน)" v-model="form.age_month" />
-                    <v-text-field required type="number" label="น้ำหนัก (กก.)" v-model="form.weight" />
-                      <v-select :items="['แบบเต็มที่','แบบจำกัด']" item-text="name" item-value="id" label="ระบบการให้อาหาร" v-model="form.fedding_system" />
-                    <v-text-field required label="อาหารข้น (กก./ตัว/วัน)" v-model="form.food" />
+                    <v-text-field required type="date" label="วัน/เดือน/ปีที่ให้" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field required type="number" label="อายุ (ปี)" v-model="form.age_year" prepend-inner-icon="mdi-calendar-heart" />
+                    <v-text-field required type="number" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-clock" />
+                    <v-text-field required type="number" label="น้ำหนัก (กก.)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+                      <v-select :items="['แบบเต็มที่','แบบจำกัด']" item-text="name" item-value="id" label="ระบบการให้อาหาร" v-model="form.fedding_system" prepend-inner-icon="mdi-scale-balance" />
+                    <v-text-field required label="อาหารข้น (กก./ตัว/วัน)" v-model="form.food" prepend-inner-icon="mdi-rice" />
                     <h2 class="mt-4">โภชนะ</h2>
-                    <v-text-field required label="โปรตีน (%)" v-model="form.protien" />  
-                    <v-text-field required label="พลังงาน" v-model="form.energy" />  
-                    <v-text-field required label="ไขมัน (%)" v-model="form.fat" />  
+                    <v-text-field required label="โปรตีน (%)" v-model="form.protien" prepend-inner-icon="mdi-scale-bathroom" />  
+                    <v-text-field required label="พลังงาน" v-model="form.energy" prepend-inner-icon="mdi-hydro-power" />  
+                    <v-text-field required label="ไขมัน (%)" v-model="form.fat" prepend-inner-icon="mdi-water" />  
                     <v-btn rounded class="w-full" type="submit" large color='success'>บันทึก</v-btn>
                      <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>
