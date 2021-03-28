@@ -11,6 +11,8 @@
             <v-text-field required v-model="form.username" filled label="ชื่อผู้ใช้ หรือ เบอร์โทรศัพท์" rounded></v-text-field>
             <v-text-field required v-model="form.password" type="password" filled label="รหัสผ่าน" rounded></v-text-field>
             <v-btn large color="success" class="w-full" type="submit" rounded>เข้าสู่ระบบ</v-btn>
+            <br><br>
+            <v-btn @click="$router.push('/auth/login')" large outlined color="primary" class="w-full"  >สมัครสมาชิก</v-btn>
           </form>
         </v-card-text>
 

@@ -27,6 +27,8 @@ class AuthModule extends VuexModule {
       await this.storeToken(key)
       await this.storeTokenToStorage(key)
       await window.location.replace("/");
+    }else{
+      alert('ไม่สามารถเข้าสู่ระบบได้กรุณาตรวจสอบข้อมูลให้ถูกต้อง')
     }
   }
 
