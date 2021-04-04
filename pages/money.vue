@@ -21,7 +21,11 @@
                         {'text': 'รายรับ' , value:true} ,
                         {'text': 'รายจ่าย' , value:false},
                     ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-layers-triple-outline" />
+                    <v-text-field v-if="form.type == true"  label="รายรับจาก..."  prepend-inner-icon="mdi-needle" />
+                    <v-text-field v-if="form.type == false" label="รายจ่าย..." prepend-inner-icon="mdi-needle" />
+
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
+                    
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>
@@ -33,7 +37,6 @@
         <v-btn class="p-1" @click="getEnv()" color="success" rounded>ค้นหา</v-btn>
     </v-toolbar>
 
-    
     <div class="p-4">
         <v-row>
             <v-col>
@@ -61,8 +64,7 @@
     </div>
     <p class="p-4 font-bold text-xl">รายการรายรับรายจ่าย</p>
     <div v-if="response" @click="(form = list)&&(dialog=true)" v-for="list,i in lists" :key="i">
-        <Core-Menu :name="list.date" :text="(list.type)? '+ รายรับ' : '- รายจ่าย' "
-         :icon="(list.type)? '/money-bag (1).png' : '/payment-method.png'  "></Core-Menu>
+        <Core-Menu :name="list.date" :text="(list.type)? '+ รายรับ' : '- รายจ่าย' " :icon="(list.type)? '/money-bag (1).png' : '/payment-method.png'  "></Core-Menu>
     </div>
     <!-- <pre>{{data}}</pre> -->
     <!-- <pre>{{lists}}</pre> -->
@@ -92,6 +94,12 @@ export default class MyComponent extends Vue {
     response: boolean = false;
 
     data: any = {};
+
+    categories: any = [
+        { name: "test", path: "test" },
+        { name: "test1", path: "test1" },
+        { name: "other", path: "other" },
+    ]
 
     async getEnv() {
         this.response = false;
