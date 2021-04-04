@@ -16,16 +16,32 @@
             <v-card-text>
                 <form @submit.prevent="(form.id)? updateData() : saveData()">
                     <v-text-field label="วันที่" type="date" v-model="form.date" prepend-inner-icon="mdi-calendar" />
-                    <v-text-field label="ชื่อ" v-model="form.name" prepend-inner-icon="mdi-card-account-details-star-outline" />
+
                     <v-select :items="[
                         {'text': 'รายรับ' , value:true} ,
                         {'text': 'รายจ่าย' , value:false},
                     ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-layers-triple-outline" />
-                    <v-text-field v-if="form.type == true"  label="รายรับจาก..."  prepend-inner-icon="mdi-credit-card-plus-outline" />
-                    <v-text-field v-if="form.type == false" label="รายจ่าย..." prepend-inner-icon="mdi-credit-card-minus-outline" />
-
+                    <v-select v-if="form.type == true" :items="[
+                        {'text': 'ขายโคขุน' , value:'ขายโคขุน'} ,
+                        {'text': 'ขายมูล' , value:'ขายมูล'},
+                        {'text': 'อื่น ๆ' , value:'อื่นๆ'},
+                    ]" v-model="form.name" label="รายรับจาก..." prepend-inner-icon="mdi-credit-card-plus-outline" />
+                    <v-select v-if="form.type == false" :items="[
+                        {'text': 'ค่าพันธุ์สัตว์' , value:'ค่าพันธุ์สัตว์'} ,
+                        {'text': 'ค่าจ้างแรงงาน' , value:'ค่าจ้างแรงงาน'},
+                        {'text': 'ค่ายา/วัคซีน' , value:'ค่ายา/วัคซีน'},
+                        {'text': 'ค่าอาหารข้น' , value:'ค่าอาหารข้น'},
+                        {'text': 'ค่าอาหารหยาบ' , value:'ค่าอาหารหยาบ'},
+                        {'text': 'ค่าเสื่อมโรงงาน' , value:'ค่าเสื่อมโรงงาน'},
+                        {'text': 'ค่าก่อสร้าง' , value:'ค่าก่อสร้าง'},
+                        {'text': 'ค่าอุปกรณ์' , value:'ค่าอุปกรณ์'},
+                        {'text': 'ค่าดอกเบี้ย' , value:'ค่าดอกเบี้ย'},
+                        {'text': 'ค่าเช่าที่ดิน' , value:'ค่าเช่าที่ดิน'},
+                        {'text': 'อื่น ๆ' , value:'อื่นๆ'},
+                    ]" v-model="form.name" label="รายจ่าย..." prepend-inner-icon="mdi-credit-card-minus-outline" />
+                    <v-text-field label="อื่นๆ " v-if="form.name == 'อื่นๆ'" prepend-inner-icon="mdi-grass" />
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
-                    
+
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
                     <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>
