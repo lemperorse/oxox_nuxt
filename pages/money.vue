@@ -21,8 +21,8 @@
                         {'text': 'รายรับ' , value:true} ,
                         {'text': 'รายจ่าย' , value:false},
                     ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-layers-triple-outline" />
-                    <v-text-field v-if="form.type == true"  label="รายรับจาก..."  prepend-inner-icon="mdi-needle" />
-                    <v-text-field v-if="form.type == false" label="รายจ่าย..." prepend-inner-icon="mdi-needle" />
+                    <v-text-field v-if="form.type == true"  label="รายรับจาก..."  prepend-inner-icon="mdi-credit-card-plus-outline" />
+                    <v-text-field v-if="form.type == false" label="รายจ่าย..." prepend-inner-icon="mdi-credit-card-minus-outline" />
 
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
                     
