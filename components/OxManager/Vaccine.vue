@@ -76,7 +76,7 @@ export default class Food extends Vue {
         }
         this.lists = await Core.getHttp(`${api}/vaccine/?ox=${this.currentId}`)
         this.response = true;
-
+        
     }
 
     async saveData() {

@@ -19,7 +19,7 @@
                     <v-text-field label="ชื่อ" v-model="form.name" prepend-inner-icon="mdi-card-account-details-star-outline" />
                     <v-select :items="[
                         {'text': 'รายรับ' , value:true} ,
-                        {'text': 'รายจ่าย' , value:false}   
+                        {'text': 'รายจ่าย' , value:false},
                     ]" label="ประเภท รายรับ-รายจ่าย" item-text="text" item-value="value" v-model="form.type" prepend-inner-icon="mdi-layers-triple-outline" />
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>

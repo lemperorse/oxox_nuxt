@@ -20,7 +20,7 @@
             <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth_id" prepend-inner-icon="mdi-tooth-outline" />
 
             <v-text-field required dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
-            <v-text-field required dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" />
+            <!-- <v-text-field required dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" /> -->
             <v-text-field dense class="p-2" type="number" label="อายุ" v-model="form.age_age" prepend-inner-icon="mdi-calendar-heart" />
             <v-text-field dense class="p-2" type="number" label="เดือน" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" />
             <v-text-field dense class="p-2" label="อายุจากการทำนาย" v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
