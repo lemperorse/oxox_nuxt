@@ -14,7 +14,7 @@
             <v-select required dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene" prepend-inner-icon="mdi-certificate-outline" />
 
             <v-select required dense class="p-2" :items="choices.gender" item-text="name" item-value="id" label="เพศ" v-model="form.gender" prepend-inner-icon="mdi-gender-male-female" />
-            <v-text-field dense class="p-2" label="เพศอื่นๆ" v-model="form.gender_ect" prepend-inner-icon="mdi-gender-male-female-variant" />
+            <v-text-field v-if="form.gender == 5" dense class="p-2" label="เพศอื่นๆ" v-model="form.gender_ect" prepend-inner-icon="mdi-gender-male-female-variant" />
 
             <v-select dense class="p-2" :items="choices.origin" item-text="name" item-value="id" label="แหล่งที่มา" v-model="form.origin" prepend-inner-icon="mdi-redhat" />
             <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth" prepend-inner-icon="mdi-tooth-outline" />
