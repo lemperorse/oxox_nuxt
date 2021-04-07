@@ -11,13 +11,13 @@
             <v-text-field dense class="p-2" label="หมายเลขไมโครชิป" v-model="form.chip_number" prepend-inner-icon="mdi-micro-sd" />
             <v-text-field dense class="p-2" label="ระดับสายเลือด" v-model="form.blood" prepend-inner-icon="mdi-iv-bag" />
 
-            <v-select required dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene_id" prepend-inner-icon="mdi-certificate-outline" />
+            <v-select required dense class="p-2" :items="choices.gene" item-text="name" item-value="id" label="พันธุ์" v-model="form.gene" prepend-inner-icon="mdi-certificate-outline" />
 
-            <v-select required dense class="p-2" :items="choices.gender" item-text="name" item-value="id" label="เพศ" v-model="form.gender_id" prepend-inner-icon="mdi-gender-male-female" />
+            <v-select required dense class="p-2" :items="choices.gender" item-text="name" item-value="id" label="เพศ" v-model="form.gender" prepend-inner-icon="mdi-gender-male-female" />
             <v-text-field dense class="p-2" label="เพศอื่นๆ" v-model="form.gender_ect" prepend-inner-icon="mdi-gender-male-female-variant" />
 
-            <v-select dense class="p-2" :items="choices.origin" item-text="name" item-value="id" label="แหล่งที่มา" v-model="form.origin_id" prepend-inner-icon="mdi-redhat" />
-            <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth_id" prepend-inner-icon="mdi-tooth-outline" />
+            <v-select dense class="p-2" :items="choices.origin" item-text="name" item-value="id" label="แหล่งที่มา" v-model="form.origin" prepend-inner-icon="mdi-redhat" />
+            <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth" prepend-inner-icon="mdi-tooth-outline" />
 
             <v-text-field required dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
             <!-- <v-text-field required dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" /> -->
@@ -32,7 +32,7 @@
             <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
             <v-text-field dense class="p-2" type="date" label="วัน/เดือน/ปีที่ซื้อ" v-model="form.buy_date" prepend-inner-icon="mdi-calendar-check-outline" />
             <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" prepend-inner-icon="mdi-tag" /> 
-            <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc_id" prepend-inner-icon="mdi-scoreboard-outline" />
+            <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" prepend-inner-icon="mdi-scoreboard-outline" />
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
         </form>
@@ -89,6 +89,11 @@ export default class Farm extends Vue {
         this.form.status = "อยู่ในฟาร์ม";
         this.form.user = this.user.id
         let ox = await Core.postHttp(`/api/v1/ox/ox/`, this.form)
+        if(ox.id){
+            alert('บันทึกข้อมูลสำเร็จ')
+              await this.$router.go(-1)
+
+        }
     }
 
 }

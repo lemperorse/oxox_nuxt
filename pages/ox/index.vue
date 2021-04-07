@@ -31,7 +31,8 @@ export default class Farm extends Vue {
     oxen: any = null
 
     async getOxen() {
-        this.oxen = await Core.getHttp(`/api/v1/ox/ox/?&status=อยู่ในฟาร์ม&user=${Auth.user.id}`)
+        let user = await Auth.getUser()
+        this.oxen = await Core.getHttp(`/api/v1/ox/ox/?&status=อยู่ในฟาร์ม&user=${user.id}`)
     }
 
     async created() {

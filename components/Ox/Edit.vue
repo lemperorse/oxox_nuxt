@@ -69,7 +69,7 @@ export default class Farm extends Vue {
     }
 
     async getOxen() {
-        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}`)
+        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}/`)
     }
 
     async created() {
