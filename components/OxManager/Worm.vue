@@ -9,7 +9,7 @@
 
     <div>
         <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="convertDate(list.created_at)" icon="/parasite.png" text="ข้อมูลการทำวัคซีน"></Core-Menu>
+            <Core-Menu :name="convertDate(list.date)" icon="/parasite.png" text="ข้อมูลการถ่ายพยาธิ"></Core-Menu>
         </div>
     </div>
 
@@ -23,12 +23,13 @@
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
 
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่ทำ" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                    <v-text-field @change="getNotificate()" type="date" label="วัน/เดือน/ปีที่ทำ" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+                  <v-text-field  disabled type="date" label="วัน/เดือน/ปีที่ครบกำหนด"  v-model="form.date_notificate" prepend-inner-icon="mdi-calendar" />
                     <v-select :items="choices.maker" item-text="name" item-value="id" label="ผู้ทำ" v-model="form.maker" prepend-inner-icon="mdi-human-male" />
 
                     <v-text-field v-if="form.maker == 3" label="ผู้ทำอื่นๆ" v-model="form.maker_ect" prepend-inner-icon="mdi-human-male-female" />
 
-                    <v-select :items="choices.items" item-text="name" item-value="id" label="ชนิดพยาธิ" v-model="form.worm" prepend-inner-icon="mdi-tilde" />
+                    <v-select @change="getNotificate()" :items="choices.items" item-text="name" item-value="id" label="ชนิดพยาธิ" v-model="form.worm" prepend-inner-icon="mdi-tilde" />
 
                     <v-text-field v-if="form.worm == 5" label="ชนิดพยาธิอื่นๆ" v-model="form.worm_ect" prepend-inner-icon="mdi-timelapse" />
 
@@ -52,6 +53,7 @@ import _ from 'lodash'
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
 import { Web } from '@/vuexes/web'
+import moment from "moment";
 const api = '/api/v1/ox_manager'
 const tool = '/api/v1/tool'
 @Component({
@@ -118,6 +120,18 @@ export default class Food extends Vue {
     convertDate(date:any){
         return Web.convertDate(date);
     }
+
+  async getNotificate(){
+    this.dialog = false;
+    if(this.form.worm && this.form.date){
+      let worm = await _.find(this.choices.items,{id:this.form.worm})
+      var date = new Date(this.form.date);
+      date.setDate(date.getDate() + worm.count_date);
+      this.form.date_notificate = moment(date).format(moment.HTML5_FMT.DATE);
+      //  alert(this.form.date_notificate);
+    }
+    this.dialog = true;
+  }
 
 }
 </script>

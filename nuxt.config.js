@@ -1,13 +1,21 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+
+  
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  generate: {
+    fallback: true
+  },
+  // target:"static",
+  // router: {
+  //   base: "/" //ชื่อ github project
+  // },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - test_cattle',
-    title: 'test_cattle',
+    titleTemplate: '',
+    title: 'ระบบจัดการโคขุน',
     htmlAttrs: {
       lang: 'en'
     },
@@ -69,5 +77,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+  "routes": [
+    { "src": "/_nuxt/.+", "headers": { "cache-control": "s-maxage=31536000" } },
+    { "src": "/(.*)", "dest": "/" }
+  ]
 }
