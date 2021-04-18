@@ -10,50 +10,50 @@
             <v-icon @click="logout()" dark>
                 mdi-logout
             </v-icon>
- 
+
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" fixed temporary>
             <div class="pt-4">
                 <div class="pt-2">
                     <v-btn class="w-full" color="success" text large>
-                        <img class="w-8" src="/house.png" alt="">
+                        <img class="w-8" src="~/static/house.png" alt="">
                         หน้าแรก
                     </v-btn>
                 </div>
 
                 <div class="pt-2">
                     <v-btn class="w-full" color="success" text large>
-                        <img class="w-8" src="/004-barn.png" alt="">
+                        <img class="w-8" src="~/static/004-barn.png" alt="">
                         ฟาร์ม
                     </v-btn>
                 </div>
                 <div class="pt-2">
                     <v-btn class="w-full" color="success" text large>
-                        <img class="w-8" src="/019-cow.png" alt="">
+                        <img class="w-8" src="~/static/019-cow.png" alt="">
                         โคขุน
                     </v-btn>
                 </div>
                 <div class="pt-2">
                     <v-btn  class="w-full" color="success" text large>
-                        <img class="w-8" src="/040-chariot.png" alt="">
+                        <img class="w-8" src="~/static/040-chariot.png" alt="">
                         การจำหน่าย
                     </v-btn>
                 </div>
                 <div class="pt-2">
                     <v-btn  class="w-full" color="success" text large>
-                        <img class="w-8" src="/044-smart.png" alt="">
+                        <img class="w-8" src="~/static/044-smart.png" alt="">
                         องค์ความรู้
                     </v-btn>
                 </div>
                 <div class="pt-2">
                     <v-btn  class="w-full" color="success" text large>
-                        <img class="w-8" src="/wallet.png" alt="">
+                        <img class="w-8" src="~/static/wallet.png" alt="">
                         การเงิน
                     </v-btn>
                 </div>
                 <div class="pt-2">
                     <v-btn class="w-full" color="success" text large>
-                        <img class="w-8" src="/business-report.png" alt="">
+                        <img class="w-8" src="~/static/business-report.png" alt="">
                         รายงาน
                     </v-btn>
                 </div>
@@ -61,7 +61,7 @@
 
         </v-navigation-drawer>
         <v-main class="ggd"  >
- 
+
             <Core-Loading />
             <Core-City />
             <Nuxt class="bg-transparent" />

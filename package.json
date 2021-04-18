@@ -7,7 +7,8 @@
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "upload": "npm run build && npm run generate &&  gh-pages -d dist -t true"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",

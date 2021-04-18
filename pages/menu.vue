@@ -19,7 +19,7 @@
 
     <div class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 transform -translate-y-20">
         <div class="flex  ">
-            <img class="w-16" src="/004-barn.png" alt="">
+            <img class="w-16" src="~/static/004-barn.png" alt="">
             <div class="pl-4">
                 <h4 class="text-xl">ฟาร์ม</h4>
                 <h3>แก้ไขข้อมูล ชื่อ ที่ตั้ง </h3>
@@ -29,7 +29,7 @@
 
     <div class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 transform -translate-y-20">
         <div class="flex  ">
-            <img class="w-16" src="/019-cow.png" alt="">
+            <img class="w-16" src="~/static/019-cow.png" alt="">
             <div class="pl-4">
                 <h4 class="text-xl">โคขุน</h4>
                 <h3>เพิ่ม แก้ไข รายการโคขุนในฟาร์ม</h3>
@@ -39,7 +39,7 @@
 
     <div class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 transform -translate-y-20">
         <div class="flex  ">
-            <img class="w-16" src="/040-chariot.png" alt="">
+            <img class="w-16" src="~/static/040-chariot.png" alt="">
             <div class="pl-4">
                 <h4 class="text-xl">การจำหน่าย</h4>
                 <h3>นำโคขุนในฟาร์มจำหน่ายออก</h3>
@@ -49,7 +49,7 @@
 
     <div class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 transform -translate-y-20">
         <div class="flex  ">
-            <img class="w-16" src="/044-smart.png" alt="">
+            <img class="w-16" src="~/static/044-smart.png" alt="">
             <div class="pl-4">
                 <h4 class="text-xl">องค์ความรู้</h4>
                 <h3>คลังข้อมูลความรู้สำหรับการเลี้ยงโคขุน</h3>
@@ -59,7 +59,7 @@
 
     <div class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 transform -translate-y-20">
         <div class="flex  ">
-            <img class="w-16" src="/business-report.png" alt="">
+            <img class="w-16" src="~/static/business-report.png" alt="">
             <div class="pl-4">
                 <h4 class="text-xl">รายงาน</h4>
                 <h3>ข้อมูลสรุปรายระเอียดต่างๆ</h3>
