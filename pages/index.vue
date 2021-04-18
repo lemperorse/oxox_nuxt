@@ -32,16 +32,23 @@
             </v-icon> การแจ้งเตือน <v-spacer></v-spacer>
             <v-btn color="red" rounded dark fab small @click="dialog=false"><v-icon>mdi-close</v-icon></v-btn>
           </v-card-title>
-          <v-card-text>
+          <v-card-text v-if="noti.count > 0">
             <h2 class="font-bold">ข้อมูลการทำวัคซีน</h2 class>
             <div v-for="(vaccine,index) in noti.vaccines" :key="index">
               <Core-Menu :name="convertDate(vaccine.date_notificate)" icon="/syringe.png" :text="`วันที่ทำ `+convertDate(vaccine.date)"></Core-Menu>
             </div>
 
             <h2 class="font-bold">ข้อมูลการถ่ายพยาธิ</h2>
-            <div v-for="(worms,index) in noti.worms" :key="index" >
+            <div v-for="(worms,index) in noti.worms" :key="index"  >
               <Core-Menu  :name="convertDate(worms.date_notificate)" icon="/parasite.png" :text="`วันที่ทำ `+convertDate(worms.date)"></Core-Menu>
             </div>
+
+          </v-card-text>
+          <v-card-text v-else>
+           <div class="p-6 flex flex-col justify-center items-center">
+             <v-icon  style="font-size:40px;">mdi-information</v-icon>
+             <p>ไม่พบข้อมูลการแจ้งเตือน</p>
+           </div>
           </v-card-text>
         </v-card>
       </v-dialog>

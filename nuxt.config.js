@@ -2,16 +2,16 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
 
-  
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   generate: {
     fallback: true
   },
-  // target:"static",
-  // router: {
-  //   base: "/" //ชื่อ github project
-  // },
+  target:"static",
+  router: {
+    base: "/oxox_nuxt/" //ชื่อ github project
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '',

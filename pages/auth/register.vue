@@ -3,7 +3,7 @@
     <v-card class="w-full md:w-1/2 rounded-xl elevation-8">
         <v-card-title>
           <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
-            
+
             <h2 class="ml-2 text-xl font-bold text-green-600">ลงทะเบียนเข้าใช้งาน </h2>
         </v-card-title>
         <v-card-text>
@@ -31,11 +31,11 @@
             </div>
             <form @submit.prevent="registerData()">
                 <v-checkbox v-model="useTel" label="ใช้เบอร์โทรศัพท์ลงทะเบียน"></v-checkbox>
-                <v-text-field type="number" required v-model="formReg.tel" filled rounded label="เบอร์โทรศัพท์" prepend-inner-icon="mdi-cellphone"></v-text-field>
+                <v-text-field @keypress="onlyNumber" type="text" minLength="10" maxlength="10" required v-model="formReg.tel" filled rounded label="เบอร์โทรศัพท์ (10 หลัก)" prepend-inner-icon="mdi-cellphone"></v-text-field>
                 <v-text-field v-if="!useTel" required v-model="formReg.username" filled rounded label="ชื่อผู้ใช้" prepend-inner-icon="mdi-face"></v-text-field>
                 <v-text-field type="password" required v-model="formReg.password" filled rounded label="รหัสผ่าน" prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                 <v-text-field type="password" required v-model="formReg.password_confirm" filled rounded label="ยืนยันรหัสผ่าน" prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
-                <v-text-field required v-model="formReg.personal_id" type="number" filled rounded label="เลขบัตรประจำตัวประชาชน" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
+                <v-text-field  @keypress="onlyNumber"  minLength="13" maxlength="13" required v-model="formReg.personal_id" type="text" filled rounded label="เลขบัตรประจำตัวประชาชน (13 หลัก)" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
 
                 <v-btn v-if="formReg.password == formReg.password_confirm && formReg.password != ''" rounded large color="success" class="w-full" type="submit">สมัครสมาชิก</v-btn>
             </form>
@@ -83,6 +83,14 @@ export default class Root extends Vue {
         }
 
     }
+
+  onlyNumber ($event:any) {
+    //console.log($event.keyCode); //keyCodes value
+    let keyCode = ($event.keyCode ? $event.keyCode : $event.which);
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) { // 46 is dot
+      $event.preventDefault();
+    }
+  }
 
 }
 </script>
