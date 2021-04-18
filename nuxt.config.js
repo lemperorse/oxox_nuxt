@@ -10,7 +10,7 @@ export default {
   },
   target:"static",
   router: {
-    base: "/oxox_nuxt/" //ชื่อ github project
+    // base: "/oxox_nuxt/" //ชื่อ github project
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

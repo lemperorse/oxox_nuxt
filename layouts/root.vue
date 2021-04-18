@@ -25,7 +25,10 @@ import {Auth} from '@/vuexes/auth'
 })
 export default class Root extends Vue {
 
+  async created() {
+    let user = await Auth.getUser();
 
+  }
 
 }
 </script>
