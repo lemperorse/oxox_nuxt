@@ -1,11 +1,14 @@
 <template>
 <div class="p-4">
-    <h2 class="text-xl font-bold text-yellow-600">{{form.name}}</h2><br>
-    <v-text-field dense class="p-2" label="อายุ (ปี)" v-model="form.age_age" prepend-inner-icon="mdi-calendar" ></v-text-field>
-    <v-text-field dense class="p-2" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" ></v-text-field>
-    <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale"  />
-    <v-select v-model="chooseKg" dense class="p-2" :items=[0.4,0.6,0.8,1.0] label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance" ></v-select>
-    <v-btn class="w-full" rounded large @click="calculate()" color="success">คำนวณ</v-btn>
+    <!-- {{form}} -->
+    <form @submit.prevent="calculate()">
+        <v-text-field dense class="p-2" label="อายุ (ปี)" v-model="form.age_age" prepend-inner-icon="mdi-calendar"></v-text-field>
+        <v-text-field dense class="p-2" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today"></v-text-field>
+        <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+        <v-select v-model="chooseKg" dense class="p-2" :items=[0.4,0.6,0.8,1.0] label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-select>
+        <!-- <v-btn class="w-full" rounded large @click="calculate()" color="success">คำนวณ</v-btn> -->
+        <v-btn class="w-full" rounded large type="submit" color="success">คำนวณ</v-btn>
+    </form>
     <v-dialog v-model="dialog">
         <v-card>
             <v-card-title primary-title>
@@ -15,11 +18,11 @@
             </v-card-title>
             <v-card-text v-if="dialog">
                 <div class="p-4">
-                    <v-text-field v-model="chooseKg"  label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
-                    <v-text-field v-model="data.g"  label="โปรตีน (%)" prepend-inner-icon="mdi-egg-outline"></v-text-field> 
-                    <v-text-field v-model="data.kg"  label="พลังงาน (kcal/kg)" prepend-inner-icon="mdi-rice"></v-text-field>
-                    <v-text-field v-model="data.cal"  label="แคลเซี่ยม (%)" prepend-inner-icon="mdi-bone"></v-text-field>
-                    <v-text-field v-model="data.fos"  label="ฟอสฟอรัส (%)" prepend-inner-icon="mdi-food"></v-text-field>
+                    <v-text-field v-model="chooseKg" label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
+                    <v-text-field v-model="data.g" label="โปรตีน (%)" prepend-inner-icon="mdi-egg-outline"></v-text-field>
+                    <v-text-field v-model="data.kg" label="พลังงาน (kcal/kg)" prepend-inner-icon="mdi-rice"></v-text-field>
+                    <v-text-field v-model="data.cal" label="แคลเซี่ยม (%)" prepend-inner-icon="mdi-bone"></v-text-field>
+                    <v-text-field v-model="data.fos" label="ฟอสฟอรัส (%)" prepend-inner-icon="mdi-food"></v-text-field>
                 </div>
             </v-card-text>
         </v-card>
@@ -50,8 +53,16 @@ export default class MyComponent extends Vue {
     dialog: boolean = false;
 
     form: any = {}
+    async getEnv() {
+        this.currentId = this.$route.params.id;
+        // this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
+    }
+    async getOxen() {
+        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}/`)
+    }
     async created() {
-        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}`)
+        await this.getEnv();
+        await this.getOxen();
     }
 
     async calculate() {

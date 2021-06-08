@@ -1,8 +1,10 @@
 <template>
 <div>
+    
     <v-toolbar flat>
         <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon>
         <v-spacer></v-spacer>
+        
         <form>
           ชื่อโค :<span class="text-xl font-bold text-yellow-600"> {{form.name}}</span>
           <!-- {{currentId}} -->
@@ -17,7 +19,7 @@
         </v-tab-item>
          <v-tab>ประสิทธิภาพการผลิต</v-tab>
         <v-tab-item>
-            <OxManager-TestOx v-if="tab == 1" />
+            <OxManager-TestOx v-if="tab == 1" ></OxManager-TestOx>
         </v-tab-item>
         <v-tab>ให้อาหาร</v-tab>
         <v-tab-item>
@@ -65,21 +67,22 @@ import { Web } from '@/vuexes/web'
 export default class Farm extends Vue {
 
     form: any = {}
-    currentId: any = 0
+    currentId: any = this.$route.params.id;
     tab: number = 0;
     
     async getEnv() {
         this.currentId = this.$route.params.id;
-        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
+        // this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
     }
 
     async getOxen() {
-
+        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}/`)
     }
 
     async created() {
         await Web.switchLoad(true);
         await this.getEnv();
+        await this.getOxen();
         await Web.switchLoad(false);
     }
 

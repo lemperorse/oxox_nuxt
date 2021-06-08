@@ -29,13 +29,50 @@
             <v-text-field dense class="p-2" label="อายุจากการทำนาย" v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
 
             <v-text-field dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar-star" />
-            <v-text-field dense class="p-2" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" />
+            <div class="flex  p-2">
+                <v-text-field dense class="" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" />
+                <v-btn class="-mt-2" small fab @click="form.weight = form.breast*2.23" color="primary">คำนวน</v-btn>
+            </div>
+            <!-- <v-text-field dense class="p-2" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" /> -->
             <v-text-field dense class="p-2" type="number" label="ความสูง (เซนติเมตร)" v-model="form.height" prepend-inner-icon="mdi-panorama-vertical" />
             <v-text-field dense class="p-2" type="number" label="ความยาวลำตัว (เซนติเมตร)" v-model="form.long" prepend-inner-icon="mdi-pan-horizontal" />
             <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
             <v-text-field dense class="p-2" type="date" label="วัน/เดือน/ปีที่ซื้อ" v-model="form.buy_date" prepend-inner-icon="mdi-calendar-check-outline" />
             <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" prepend-inner-icon="mdi-tag" /> 
-            <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" prepend-inner-icon="mdi-scoreboard-outline" />
+            <!-- <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" prepend-inner-icon="mdi-scoreboard-outline" /> -->
+
+            <div class="flex  p-2">
+                <v-select dense class="" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" prepend-inner-icon="mdi-scoreboard-outline" />
+                <v-dialog scrollable v-model="dialog" width="500">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn fab small class="-mt-2" color="primary" dark v-bind="attrs" v-on="on">
+                            !
+                        </v-btn>
+                    </template>
+
+                    <v-card>
+                        <v-card-title class="text-xs grey lighten-2">
+                            ประเมินคะแนนสภาพร่างกาย (BCS)
+                        </v-card-title>
+
+                        <v-card-text>
+                            <center>
+                                <img src="~/static/1.png" class="w-full" />
+                                <img src="~/static/2.png" class="w-full h-full" />
+                            </center>
+                        </v-card-text>
+
+                        <v-divider></v-divider>
+
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="error" text @click="dialog = false">
+                                ปิด
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </div>
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
         </form>
@@ -60,6 +97,7 @@ export default class Farm extends Vue {
     oxen: any = null
     form: any = {}
     group: any = null
+    dialog: boolean = false;
     choices: any = {}
 
     toothVal: any = {}

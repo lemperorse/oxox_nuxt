@@ -1,27 +1,27 @@
 <template>
 <div class="p-4">
-    <h2 class="text-xl font-bold text-yellow-600">{{form.name}}</h2><br>
-    <form @submit.prevent="calculate()" >
-   <v-text-field @change="calDate()" required type="date" dense  class="p-2" label="วัน/เดือน/ปี" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar"></v-text-field>
-    <v-text-field required type="number" dense  class="p-2" label="จำนวนวัน" v-model="form.count" prepend-inner-icon="mdi-calendar-clock"></v-text-field>
-    <v-text-field required type="number"  dense class="p-2"  label="น้ำหนักเริ่มขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
-    <v-text-field required type="number"  dense class="p-2"   label="น้ำหนักสิ้นสุดการขุน (กิโลกรัม)" v-model="form.weight_end" prepend-inner-icon="mdi-scale-balance" />
-    <v-text-field required type="number"  dense class="p-2"  label="ปริมาณอาหารทั้งหมดที่ใช้เลี้ยง (กิโลกรัม)" v-model="form.food" prepend-inner-icon="mdi-food" />  
-    <v-btn class="w-full" rounded large  type="submit" color="success">คำนวณ</v-btn>
+    <!-- <h2 class="text-xl font-bold text-yellow-600">{{form.name}}</h2><br> -->
+    <form @submit.prevent="calculate()">
+        <v-text-field @change="calDate()" required type="date" dense class="p-2" label="วัน/เดือน/ปี" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar"></v-text-field>
+        <v-text-field required type="number" dense class="p-2" label="จำนวนวัน" v-model="form.count" prepend-inner-icon="mdi-calendar-clock"></v-text-field>
+        <v-text-field required type="number" dense class="p-2" label="น้ำหนักเริ่มขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+        <v-text-field required type="number" dense class="p-2" label="น้ำหนักสิ้นสุดการขุน (กิโลกรัม)" v-model="form.weight_end" prepend-inner-icon="mdi-scale-balance" />
+        <v-text-field required type="number" dense class="p-2" label="ปริมาณอาหารทั้งหมดที่ใช้เลี้ยง (กิโลกรัม)" v-model="form.food" prepend-inner-icon="mdi-food" />
+        <v-btn class="w-full" rounded large type="submit" color="success">คำนวณ</v-btn>
     </form>
- 
+
     <v-dialog v-model="dialog">
         <v-card>
             <v-card-title primary-title>
-                <p class="text-xl text-blue-400 font-bold mt-4">คำนวณประสิทธิภาพการผลิต</p> 
+                <p class="text-xl text-blue-400 font-bold mt-4">คำนวณประสิทธิภาพการผลิต</p>
                 <v-spacer></v-spacer>
-                <v-btn @click="(form = {})&&(dialog=false)" color="error" fab small>x</v-btn> 
+                <v-btn @click="(form = {})&&(dialog=false)" color="error" fab small>x</v-btn>
             </v-card-title>
             <v-card-text v-if="dialog">
-                <div class="p-4"> 
+                <div class="p-4">
                     <v-text-field v-model="data.ADG" label="การเจริญเติบโตเฉลี่ยต่อวัน (ADG)" prepend-inner-icon="mdi-pan-vertical"></v-text-field>
-                    <v-text-field v-model="data.FCR" label="การเปลี่ยนอาหารเป็นเนื้อ (FCR)" prepend-inner-icon="mdi-food-drumstick-outline"></v-text-field> 
-                    <v-text-field v-model="data.FI" label="อัตราการกินได้ต่อวัน (FI)" prepend-inner-icon="mdi-rice"></v-text-field> 
+                    <v-text-field v-model="data.FCR" label="การเปลี่ยนอาหารเป็นเนื้อ (FCR)" prepend-inner-icon="mdi-food-drumstick-outline"></v-text-field>
+                    <!-- <v-text-field v-model="data.FI" label="อัตราการกินได้ต่อวัน (FI)" prepend-inner-icon="mdi-rice"></v-text-field>  -->
                 </div>
             </v-card-text>
         </v-card>
@@ -53,31 +53,37 @@ export default class MyComponent extends Vue {
     dialog: boolean = false;
 
     form: any = {}
+    async getEnv() {
+        this.currentId = this.$route.params.id;
+        // this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
+    }
+    async getOxen() {
+        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}/`)
+    }
     async created() {
-        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}`)
+        // this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}`)
+        await this.getEnv();
+        await this.getOxen();
         await this.calDate();
     }
 
-
-   async calDate(){
-         var a = moment( );
-        var b = moment(this.form.fatten_date ); 
+    async calDate() {
+        var a = moment();
+        var b = moment(this.form.fatten_date);
         var diffInDays = a.diff(b, 'days'); // 1 day
-        this.form.count = diffInDays 
+        this.form.count = diffInDays
     }
 
     async calculate() {
-        
+
         this.data = {
-            ADG : ((this.form.weight_end - this.form.weight) / this.form.count).toFixed(2),
-            FCR : (this.form.food / (this.form.weight_end - this.form.weight) ).toFixed(2),
-            FI : (this.form.food / (this.form.count) ).toFixed(2),
+            ADG: ((this.form.weight_end - this.form.weight) / this.form.count).toFixed(2),
+            FCR: (this.form.food / (this.form.weight_end - this.form.weight)).toFixed(2),
+            // FI : (this.form.food / (this.form.count) ).toFixed(2),
         }
         this.dialog = true;
-      
-    }
 
- 
+    }
 
 }
 </script>

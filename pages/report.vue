@@ -10,7 +10,6 @@
                 โคขุน
             </v-tab>
             <v-tab-item>
-
                 <Report-GraphOx v-if="tab == 0" :raw_xo="raw_xo"></Report-GraphOx> <br><br>
                 <Report-GraphOxWeight v-if="tab == 0" :raw_xo="raw_xo"></Report-GraphOxWeight>
             </v-tab-item>
@@ -21,8 +20,7 @@
                 <Report-GrapnIncome v-if="tab ==1 "></Report-GrapnIncome>
             </v-tab-item>
         </v-tabs>
-      <br>
-      <br>   <br>   <br>
+
     </v-container>
 
 </div>

@@ -21,6 +21,10 @@ class WebModule extends VuexModule {
     this.loading = false
   }
 
+  public fillData(arr:any,key:string,val:any){
+    return _.find(arr,(r)=>{ return r[key] == val  })
+  }
+
   convertDate(date:any) {
     return moment(date).format('DD/MM/YYYY');
 }

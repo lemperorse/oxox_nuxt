@@ -47,16 +47,17 @@ export default class Farm extends Vue {
     
     async getEnv() {
         this.currentId = this.$route.params.id;
-        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
+        // this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId }`)
     }
 
     async getOxen() {
-
+        this.form = await Core.getHttp(`/api/v1/ox/ox/${this.currentId}/`)
     }
 
     async created() {
         await Web.switchLoad(true);
         await this.getEnv();
+        await this.getOxen();
         await Web.switchLoad(false);
     }
 
