@@ -31,11 +31,11 @@
             </div>
             <form @submit.prevent="registerData()">
                 <v-checkbox v-model="useTel" label="ใช้เบอร์โทรศัพท์ลงทะเบียน"></v-checkbox>
-                <v-text-field type="number" required v-model="formReg.tel" filled rounded label="เบอร์โทรศัพท์" prepend-inner-icon="mdi-cellphone"></v-text-field>
+                <v-text-field type="number" required v-model="formReg.tel" filled rounded label="เบอร์โทรศัพท์" :rules="rules" counter maxlength="10" prepend-inner-icon="mdi-cellphone"></v-text-field>
                 <v-text-field v-if="!useTel" required v-model="formReg.username" filled rounded label="ชื่อผู้ใช้" prepend-inner-icon="mdi-face"></v-text-field>
                 <v-text-field type="password" required v-model="formReg.password" filled rounded label="รหัสผ่าน" prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                 <v-text-field type="password" required v-model="formReg.password_confirm" filled rounded label="ยืนยันรหัสผ่าน" prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
-                <v-text-field required v-model="formReg.personal_id" type="number" filled rounded label="เลขบัตรประจำตัวประชาชน" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
+                <v-text-field required v-model="formReg.personal_id" type="number" filled rounded label="เลขบัตรประจำตัวประชาชน" :rules="rulesIDcard" counter maxlength="13" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
 
                 <v-btn v-if="formReg.password == formReg.password_confirm && formReg.password != ''" rounded large color="success" class="w-full" type="submit">สมัครสมาชิก</v-btn>
             </form>
@@ -69,6 +69,19 @@ export default class Root extends Vue {
     errorReg: any = null
     useTel: boolean = true
     formReg: any = {}
+    
+    rules:any = [
+        (v:string) => !!v || 'กรอกเบอร์โทรศัพท์มือถือ 10 หลัก',
+        (v:string) => ( v && v.length >= 10 ) || 'กรุณากรอกเบอร์โทรศัพท์มือถือ 10 หลัก',
+        (v:string) => ( v && v.length <= 10 ) || 'เบอร์โทรศัพท์มือถือเกิน 10 หลัก',
+    ]
+
+    rulesIDcard:any = [
+        (v:string) => !!v || 'กรอกเลขบัตรประชาชน 13 หลัก',
+        (v:string) => ( v && v.length >= 13 ) || 'กรุณากรอกเลขบัตรประชาชน 13 หลัก',
+        (v:string) => ( v && v.length <= 13 ) || 'เลขบัตรประชาชนเกิน 13 หลัก',
+    ]
+
     async registerData() {
         if (this.useTel) {
             this.formReg.username = this.formReg.tel
