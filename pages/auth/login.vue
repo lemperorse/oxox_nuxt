@@ -36,9 +36,24 @@ export default {
   data: () => ({
     form:{}
   }),
+  async created(){
+    await this.checkUser();
+  },
   methods: {
     async login(){
-      let user = await Auth.login(this.form);
+      await Auth.login(this.form);
+      let user = await Auth.getUser(); 
+      if(user.id){
+        //await location.reload();
+        await this.$router.replace('/')
+        await location.reload();
+      }
+    },
+    async checkUser(){
+      let user = await Auth.getUser(); 
+      if(user.id){
+        await this.$router.replace('/')
+      }
     }
   }
 }

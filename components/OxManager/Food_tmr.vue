@@ -8,7 +8,7 @@
     </v-toolbar>
 
       <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="list.tmr_mix" icon="/food3.png" :text="list.fedding_system"></Core-Menu>
+            <Core-Menu :name="list.tmr_mix" icon="food3.png" :text="list.fedding_system"></Core-Menu>
         </div>
 
     <v-dialog fullscreen persistent v-model="dialog">

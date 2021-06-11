@@ -9,7 +9,7 @@
 
     <div>
         <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="convertDate(list.created_at)" icon="/money-bag (1).png" text="ประวัติการจำหน่าย"></Core-Menu>
+            <Core-Menu :name="convertDate(list.created_at)" icon="money-bag (1).png" text="ประวัติการจำหน่าย"></Core-Menu>
         </div>
     </div>
 

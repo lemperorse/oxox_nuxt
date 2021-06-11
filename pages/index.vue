@@ -35,12 +35,12 @@
           <v-card-text>
             <h2 class="font-bold">ข้อมูลการทำวัคซีน</h2>
             <div v-for="(vaccine,index) in noti.vaccines" :key="index">
-              <Core-Menu :name="convertDate(vaccine.date_notificate)" icon="/syringe.png" :text="`วันที่ทำ `+convertDate(vaccine.date)"></Core-Menu>
+              <Core-Menu :name="convertDate(vaccine.date_notificate)" icon="syringe.png" :text="`วันที่ทำ `+convertDate(vaccine.date)"></Core-Menu>
             </div>
 
             <h2 class="font-bold">ข้อมูลการถ่ายพยาธิ</h2>
             <div v-for="(worms,index) in noti.worms" :key="index" >
-              <Core-Menu  :name="convertDate(worms.date_notificate)" icon="/parasite.png" :text="`วันที่ทำ `+convertDate(worms.date)"></Core-Menu>
+              <Core-Menu  :name="convertDate(worms.date_notificate)" icon="parasite.png" :text="`วันที่ทำ `+convertDate(worms.date)"></Core-Menu>
             </div>
           </v-card-text>
         </v-card>
@@ -75,35 +75,35 @@ export default class MyComponent extends Vue {
      {
        name:'ฟาร์ม',
        text:'แก้ไขข้อมูล ชื่อ ที่ตั้ง',
-       icon:'/004-barn.png',
+       icon:'004-barn.png',
        route:'/farm/'
      },
      {
        name:'โคขุน',
        text:'เพิ่ม แก้ไข รายการโคขุนในฟาร์ม',
-       icon:'/019-cow.png',
+       icon:'019-cow.png',
        route:'/ox/'
      },{
        name:'การจำหน่าย',
        text:'นำโคขุนในฟาร์มจำหน่ายออก',
-       icon:'/040-chariot.png',
+       icon:'040-chariot.png',
        route:'/sell/'
      },{
        name:'องค์ความรู้',
        text:'คลังข้อมูลความรู้สำหรับการเลี้ยงโคขุน',
-       icon:'/044-smart.png',
+       icon:'044-smart.png',
        route:'/knowledge/'
      },
      {
        name:'การเงิน',
        text:'จัดการข้อมูลรายรับรายจ่าย',
-       icon:'/wallet.png',
+       icon:'wallet.png',
        route:'/money/'
      },
      {
        name:'รายงาน',
        text:'ข้อมูลสรุปรายระเอียดต่างๆ',
-       icon:'/business-report.png',
+       icon:'business-report.png',
        route:'/report/'
      },
    ]
@@ -112,6 +112,7 @@ export default class MyComponent extends Vue {
   async created() {
     this.user = await Auth.getUser();
     this.noti = await Core.getHttp(`/api/v1/notification/${this.user.id}/`)
+  
   }
 
 

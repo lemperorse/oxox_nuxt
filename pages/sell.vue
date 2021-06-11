@@ -8,7 +8,7 @@
     </v-toolbar>
 
     <div v-for="ox,index in oxen" :key="index"  @click="(form = ox)&& (dialog =true)">
-        <Core-Menu icon="/017-cow.png" :name="ox.name" :text="convertDate(ox.updated_at)"></Core-Menu>
+        <Core-Menu icon="017-cow.png" :name="ox.name" :text="convertDate(ox.updated_at)"></Core-Menu>
     </div>
 
     <v-bottom-sheet v-model="dialog">

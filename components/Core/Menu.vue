@@ -1,7 +1,7 @@
 <template>
 <div class="m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4">
     <div class="flex  ">
-        <img class="w-16" :src="icon" alt="">
+        <img class="w-16" :src="app+icon" alt="">
         <div class="pl-4">
             <h4 class="text-xl">{{name}}</h4>
             <h3>{{text}}</h3>
@@ -20,8 +20,12 @@ export default {
     },
     data: () => {
         return ({
-            test: 'sss'
+            test: 'sss',
+            app:'',
         })
+    },
+    async created(){ 
+          this.app = this.$config._app.basePath
     }
 }
 </script>

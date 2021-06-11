@@ -7,7 +7,7 @@
     </v-toolbar>
     <div>
         <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="convertDate(list.created_at)" icon="/medical-report.png" text="ประวัติการรักษา"></Core-Menu>
+            <Core-Menu :name="convertDate(list.created_at)" icon="medical-report.png" text="ประวัติการรักษา"></Core-Menu>
         </div>
     </div>
     <v-dialog v-model="dialog" fullscreen>

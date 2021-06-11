@@ -7,7 +7,7 @@
     </v-toolbar>
 
     <div v-for="ox,index in oxen" :key="index">
-        <Menu :route="`/ox/${ox.id}/`" icon="/017-cow.png" :name="ox.name" :text="convertDate(ox.created_at)"></Menu>
+        <Menu :route="`/ox/${ox.id}/`" icon="017-cow.png" :name="ox.name" :text="convertDate(ox.created_at)"></Menu>
     </div>
 
 </div>
