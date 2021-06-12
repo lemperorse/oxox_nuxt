@@ -18,7 +18,7 @@
                  <v-spacer></v-spacer>
                 <v-btn @click="(form = {}) && (dialog = false)" small fab color="error">X</v-btn>
             </v-card-title>
-            <v-card-text>
+            <v-card-text> 
                 <form @submit.prevent="(form.id)?updateData():saveData()"> 
                     <v-text-field required type="date" label="วัน/เดือน/ปีที่ให้" v-model="form.date" prepend-inner-icon="mdi-calendar" />
                      <v-text-field required type="number" label="การให้อาหาร (TMR) ครั้งที่" v-model="form.tmr" prepend-inner-icon="mdi-numeric" /> 
@@ -47,6 +47,8 @@ import {
 } from "nuxt-property-decorator"
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+const api = '/api/v1/ox_manager'
+const tool = '/api/v1/tool'
 @Component({
 
     components: {},
@@ -58,10 +60,20 @@ export default class FoodRough extends Vue {
     form: any = {}
     choices: any = {}
     dialog: boolean = false;
+    response: boolean = true;
+    
 
     async getEnv() {
-      this.lists = await Core.getHttp(`/api/v1/ox_manager/food_tmr/`)
+        this.choices = {
+            maker: await Core.getHttp(tool + `/tmrmaker/`), 
+        }
+        this.lists = await Core.getHttp(`${api}/food_tmr/?ox=${this.currentId}`)
+        this.response = true;
     }
+
+    // async getEnv() {
+    //   this.lists = await Core.getHttp(`/api/v1/ox_manager/food_tmr/`)
+    // }
 
     async saveData(){
       this.form.ox = this.currentId
@@ -87,7 +99,7 @@ export default class FoodRough extends Vue {
     }
 
     async removeData() {
-        let check = confirm('คุณแน่ใจฝช่ไหม')
+        let check = confirm('คุณแน่ใจใช่ไหม')
         if (check) {
             await Core.deleteHttp(`/api/v1/ox_manager/food_tmr/${this.form.id}/`)
             alert("ลบข้อมูลสำเร็จแล้ว");

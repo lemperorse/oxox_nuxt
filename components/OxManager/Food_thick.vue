@@ -48,6 +48,8 @@ import {
 } from "nuxt-property-decorator"
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+const api = '/api/v1/ox_manager'
+const tool = '/api/v1/tool'
 @Component({
 
     components: {},
@@ -59,10 +61,19 @@ export default class FoodRough extends Vue {
     form: any = {}
     choices: any = {}
     dialog: boolean = false;
+    response: boolean = true;
 
     async getEnv() {
-      this.lists = await Core.getHttp(`/api/v1/ox_manager/food_thick/`)
+        this.choices = {
+            maker: await Core.getHttp(tool + `/tmrmaker/`), 
+        }
+        this.lists = await Core.getHttp(`${api}/food_thick/?ox=${this.currentId}`)
+        this.response = true;
     }
+
+    // async getEnv() {
+    //   this.lists = await Core.getHttp(`/api/v1/ox_manager/food_thick/`)
+    // }
 
     async saveData(){
       this.form.ox = this.currentId

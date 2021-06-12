@@ -8,7 +8,7 @@
     </v-toolbar>
 
       <div @click="(form = list) && (dialog = true)" v-for="list,index in lists" :key="index">
-            <Core-Menu :name="list.food" icon="food1.png" :text="list.fedding_system"></Core-Menu>
+            <Core-Menu :name="list.food_type" icon="food1.png" :text="list.fedding_system"></Core-Menu>
         </div>
 
     <v-dialog fullscreen persistent v-model="dialog">
@@ -46,6 +46,8 @@ import {
 } from "nuxt-property-decorator"
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+const api = '/api/v1/ox_manager'
+const tool = '/api/v1/tool'
 @Component({
 
     components: {},
@@ -57,10 +59,20 @@ export default class FoodRough extends Vue {
     form: any = {}
     choices: any = {}
     dialog: boolean = false;
+    response: boolean = true;
+    
 
     async getEnv() {
-      this.lists = await Core.getHttp(`/api/v1/ox_manager/food_rough/`)
+        this.choices = {
+            maker: await Core.getHttp(tool + `/tmrmaker/`), 
+        }
+        this.lists = await Core.getHttp(`${api}/food_rough/?ox=${this.currentId}`)
+        this.response = true;
     }
+
+    // async getEnv() {
+    //   this.lists = await Core.getHttp(`/api/v1/ox_manager/food_rough/`)
+    // }
 
     async saveData(){
       this.form.ox = this.currentId
