@@ -130,8 +130,7 @@ export default class Farm extends Vue {
     }
 
     @Watch('form.tooth')
-    async onChangeAge(val: string) {
-        console.log(val)
+    async onChangeAge(val: string) { 
         let tooth:any = _.find(this.choices.tooth,{id:val}) 
         this.form.age_predict = tooth.age_val
     }
