@@ -88,6 +88,7 @@ import {
 } from "nuxt-property-decorator"
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
+import moment from "moment";
 @Component({
 
     components: {},
@@ -120,6 +121,11 @@ export default class Farm extends Vue {
     async created() {
         await this.getEnv();
         await this.getOxen();
+    }
+
+    @Watch('form.birth_date')
+    async onChangeDate(val: string) {
+        this.form.age_predict = moment().diff(val, 'years', false);
     }
 
     get user() {

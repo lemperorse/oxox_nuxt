@@ -87,6 +87,7 @@ import {
 import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
 import { Web } from '@/vuexes/web'
+import moment from "moment";
 @Component({
 
     components: {},
@@ -120,6 +121,11 @@ export default class Farm extends Vue {
         await this.getOxen();
         this.response = true;
 
+    }
+
+    @Watch('form.birth_date')
+    async onChangeDate(val: string) {
+        this.form.age_predict = moment().diff(val, 'years', false);
     }
 
     get user() {
