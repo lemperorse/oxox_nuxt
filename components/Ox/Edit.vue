@@ -18,12 +18,12 @@
             <!-- {{ (isWeb.fillData( choices.origin ,'type',true )) }} -->
             <v-text-field class="p-2" v-if="form.origin == (isWeb.fillData( choices.origin ,'type',true )).id " label="แหล่งที่มาอื่นๆ" prepend-inner-icon="mdi-redhat"></v-text-field>
             <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth" prepend-inner-icon="mdi-tooth-outline" />
-
+            <v-text-field dense class="p-2" type="text" label="อายุจากการทำนายฟัน"   v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
+            
             <v-text-field dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
             <!-- <v-text-field dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" /> -->
             <v-text-field dense class="p-2" type="number" label="อายุ" v-model="form.age_age" prepend-inner-icon="mdi-calendar-heart" />
             <v-text-field dense class="p-2" type="number" label="เดือน" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" />
-            <v-text-field dense class="p-2" type="number" label="อายุจากการทำนาย" v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
 
             <v-text-field dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar-star" />
             <div class="flex  p-2">
@@ -88,6 +88,7 @@ import { Core } from '@/vuexes/core'
 import { Auth } from '@/vuexes/auth'
 import { Web } from '@/vuexes/web'
 import moment from "moment";
+import _ from 'lodash'
 @Component({
 
     components: {},
@@ -125,7 +126,14 @@ export default class Farm extends Vue {
 
     @Watch('form.birth_date')
     async onChangeDate(val: string) {
-        this.form.age_predict = moment().diff(val, 'years', false);
+        this.form.age = moment().diff(val, 'years', false);
+    }
+
+    @Watch('form.tooth')
+    async onChangeAge(val: string) {
+        console.log(val)
+        let tooth:any = _.find(this.choices.tooth,{id:val}) 
+        this.form.age_predict = tooth.age_val
     }
 
     get user() {
