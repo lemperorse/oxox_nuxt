@@ -4,18 +4,22 @@
 
 
 /*!
- * ApexCharts v3.26.0
- * (c) 2018-2021 Juned Chhipa
+  * vue-router v3.5.1
+  * (c) 2021 Evan You
+  * @license MIT
+  */
+
+/*!
+ * Vue.js v2.6.12
+ * (c) 2014-2020 Evan You
  * Released under the MIT License.
  */
 
-/*! svg.draggable.js - v2.2.2 - 2019-01-08
-  * https://github.com/svgdotjs/svg.draggable.js
-  * Copyright (c) 2019 Wout Fierens; Licensed MIT */
-
-/*! svg.filter.js - v2.0.2 - 2016-02-24
-  * https://github.com/wout/svg.filter.js
-  * Copyright (c) 2016 Wout Fierens; Licensed MIT */
+/*!
+ * vuex v3.6.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
 
 
 //! moment.js locale configuration
@@ -56,22 +60,18 @@ PERFORMANCE OF THIS SOFTWARE.
 
 
 /*!
-  * vue-router v3.5.1
-  * (c) 2021 Evan You
-  * @license MIT
-  */
-
-/*!
- * Vue.js v2.6.12
- * (c) 2014-2020 Evan You
+ * ApexCharts v3.26.0
+ * (c) 2018-2021 Juned Chhipa
  * Released under the MIT License.
  */
 
-/*!
- * vuex v3.6.2
- * (c) 2021 Evan You
- * @license MIT
- */
+/*! svg.draggable.js - v2.2.2 - 2019-01-08
+  * https://github.com/svgdotjs/svg.draggable.js
+  * Copyright (c) 2019 Wout Fierens; Licensed MIT */
+
+/*! svg.filter.js - v2.0.2 - 2016-02-24
+  * https://github.com/wout/svg.filter.js
+  * Copyright (c) 2016 Wout Fierens; Licensed MIT */
 
 
 /**
@@ -82,6 +82,9 @@ PERFORMANCE OF THIS SOFTWARE.
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
+
+
+//! moment.js locale configuration
 
 
 //! moment.js locale configuration
