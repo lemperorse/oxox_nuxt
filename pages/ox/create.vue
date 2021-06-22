@@ -138,7 +138,7 @@ export default class Farm extends Vue {
         let ox = await Core.postHttp(`/api/v1/ox/ox/`, this.form)
         if(ox.id){
             alert('บันทึกข้อมูลสำเร็จ')
-              await this.$router.go(-1)
+            await this.$router.go(-1)
 
         }
     }

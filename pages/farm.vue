@@ -84,6 +84,7 @@ export default class Farm extends Vue {
         let user = await Core.putHttp(`/api/v1/farmer/userprofile/${this.form.id}/`, this.form)
         if (user.id) {
             await this.getEnv();
+            alert('บันทึกข้อมูลสำเร็จ')
         }
     }
 
