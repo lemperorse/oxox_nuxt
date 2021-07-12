@@ -8,7 +8,7 @@
             </v-card-title>
             <div class="text-xl p-6">ล่าสุด</div>
             <v-toolbar color="transparent" flat>
-                <p class="text-xl font-bold text-blue-600 p-6">Apk Version 1.0<br> <span class="text-base font-thin">เวลาอัพโหลด 12/05/2020</span></p>
+                <p class="text-xl font-bold text-blue-600 p-6">Apk Version 1.0<br> <span class="text-base font-thin">เวลาอัพโหลด 10/01/2021</span></p>
                 <v-spacer></v-spacer>
                 <v-btn color="indigo accent-3" dark rounded depressed>Download</v-btn>
             </v-toolbar>
