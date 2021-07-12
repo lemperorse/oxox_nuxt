@@ -4,19 +4,22 @@
       <v-card class="w-full md:w-1/2 rounded-xl elevation-8">
         <v-card-title>
           <p class="text-xl font-bold text-green-600">เข้าสู่ระบบ<br> <span class="text-base font-thin">ระบบจัดการโคขุน</span></p>
-          
           <br>
         </v-card-title>
         <v-card-text>
           <form @submit.prevent="login()">
             <v-text-field required v-model="form.username" filled label="ชื่อผู้ใช้ หรือ เบอร์โทรศัพท์" rounded prepend-inner-icon="mdi-face"></v-text-field>
             <v-text-field required v-model="form.password" type="password" filled label="รหัสผ่าน" rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
-            <v-btn large color="success" class="w-full" type="submit" rounded>เข้าสู่ระบบ</v-btn>
+            <v-btn depressed large color="success" class="w-full" type="submit" rounded>เข้าสู่ระบบ</v-btn>
             <br><br>
             <v-btn text @click="$router.push('/auth/register')" large rounded color="primary" class="w-full font-bold">สมัครสมาชิก</v-btn>
           </form>
         </v-card-text>
-
+        <v-toolbar color="transparent" flat v-if="$vuetify.breakpoint.mobile != true">
+          <v-btn @click="$router.push('/auth/download')" color="indigo accent-3" dark depressed rounded>Download APK</v-btn>
+          <v-spacer></v-spacer>
+          <Button-Google />
+        </v-toolbar>
       </v-card>
     </div>
   </div>

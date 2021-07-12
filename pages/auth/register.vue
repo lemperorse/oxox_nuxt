@@ -40,6 +40,11 @@
                 <v-btn v-if="formReg.password == formReg.password_confirm && formReg.password != ''" rounded large color="success" class="w-full" type="submit">สมัครสมาชิก</v-btn>
             </form>
         </v-card-text>
+        <v-toolbar color="transparent" flat>
+          <v-btn @click="$router.push('/auth/download')" color="indigo accent-3" dark depressed rounded>Download APK</v-btn>
+          <v-spacer></v-spacer>
+          <Button-Google />
+        </v-toolbar>
 
     </v-card>
 

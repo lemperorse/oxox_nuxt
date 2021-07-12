@@ -28,8 +28,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {href:"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel:"stylesheet"},
-
+      {href:"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", rel:"stylesheet"}, 
     ]
   },
 
