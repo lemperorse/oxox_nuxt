@@ -7,6 +7,7 @@ class CoreModule extends VuexModule {
   //state
   private token: string | null = null;
   public Hi:String | null = null;
+  public choices:any = {}
 
 
   async getHttp(url:string):Promise<any>{
@@ -42,6 +43,11 @@ class CoreModule extends VuexModule {
       reader.onload = () => resolve(reader.result);
       reader.onerror = error => reject(error);
     });
+  }
+
+
+  async getChoices(){
+      this.choices = await this.getHttp(`/api/v1/ox_manager/choices/`)
   }
 
 

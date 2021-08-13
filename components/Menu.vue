@@ -1,5 +1,5 @@
 <template>
-  <div @click="$router.push(route)"  class=" m-4 rounded-xl shadow-2xl border-b-4 border-green-500 p-4 bg-white">
+  <div @click="$router.push(route)"  class=" m-4 rounded-xl shadow-2xl border-b-4  p-4 bg-white" :class="color">
     <div class="flex  ">
       <img class="w-16" :src="app+icon" alt="">
       <div class="pl-4">
@@ -16,6 +16,7 @@ export default {
       name:{default:'รายงาน'},
       icon:{default:'/business-report.png'},
       text:{default:'ข้อมูลสรุปรายระเอียดต่างๆ'},
+        color : {default:'border-green-500'},
       route:{default:'/'},
     },
    data: ()=>{

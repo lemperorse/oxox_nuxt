@@ -81,6 +81,7 @@ import {
     Watch,
 } from "nuxt-property-decorator"
 import { Auth } from '@/vuexes/auth'
+import { Core } from '@/vuexes/core'
 @Component({
     components: {},
 })
@@ -106,6 +107,8 @@ export default class Layout extends Vue {
         let user = await Auth.getUser();
         if (!user.id) {
             await this.$router.replace(`/auth/login`)
+        }else{
+            await Core.getChoices();
         }
     }
 

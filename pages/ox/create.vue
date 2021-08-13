@@ -28,7 +28,7 @@
             <v-text-field dense class="p-2" type="number" label="อายุ" v-model="form.age_age" prepend-inner-icon="mdi-calendar-heart" />
             <v-text-field dense class="p-2" type="number" label="เดือน" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" />
 
-            <v-text-field dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar-star" />
+            <v-text-field dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" v-if="form.sex == 'โคขุน'" prepend-inner-icon="mdi-calendar-star" />
             <div class="flex  p-2">
                 <v-text-field dense class="" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" />
                 <v-btn class="-mt-2" small fab @click="form.weight = form.breast*2.23" color="primary">คำนวน</v-btn>
@@ -76,6 +76,7 @@
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
         </form>
+      
     </v-container>
 </div>
 </template>
@@ -95,14 +96,17 @@ import _ from 'lodash'
     components: {},
 })
 export default class Farm extends Vue {
-
+ 
     oxen: any = null
-    form: any = {}
+    form: any = {
+        sex : this.$route.query.type
+    }
     group: any = null
     dialog: boolean = false;
     choices: any = {}
 
     toothVal: any = {}
+    SEX:any = this.$route.query.type
 
     async getEnv() {
 

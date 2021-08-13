@@ -20,7 +20,7 @@
    </v-toolbar>
 <!--   <h2 class="text-xl p-4 font-bold">เมนูหลัก</h2>-->
    <v-divider class="ml-2 w-11/12"></v-divider>
-    <Menu   v-for="menu,index in listPages" :key="index"
+    <Menu   v-for="menu,index in listPages" :key="index" :color="menu.color"
        :route="menu.route"   :name="menu.name" :text="menu.text" :icon="menu.icon"></Menu>
        <br> <br> <br>
 
@@ -35,7 +35,7 @@
           <v-card-text>
             <h2 class="font-bold">ข้อมูลการทำวัคซีน</h2>
             <div v-for="(vaccine,index) in noti.vaccines" :key="index">
-              <Core-Menu :name="convertDate(vaccine.date_notificate)" icon="syringe.png" :text="`วันที่ทำ `+convertDate(vaccine.date)"></Core-Menu>
+              <Core-Menu  :name="convertDate(vaccine.date_notificate)" icon="syringe.png" :text="`วันที่ทำ `+convertDate(vaccine.date)"></Core-Menu>
             </div>
 
             <h2 class="font-bold">ข้อมูลการถ่ายพยาธิ</h2>
@@ -76,35 +76,63 @@ export default class MyComponent extends Vue {
        name:'ฟาร์ม',
        text:'แก้ไขข้อมูล ชื่อ ที่ตั้ง',
        icon:'004-barn.png',
-       route:'/farm/'
+       route:'/farm/',
+       color:'border-green-500'
+     },
+     {
+       name:'พ่อพันธุ์',
+       text:'เพิ่ม แก้ไข รายการโคขุนในฟาร์ม',
+       icon:'019-cow.png',
+       route:'/ox/?type=โคพ่อพันธุ์',
+       color:'border-yellow-500'
+     },
+     {
+       name:'แม่พันธุ์',
+       text:'เพิ่ม แก้ไข รายการโคขุนในฟาร์ม',
+       icon:'019-cow.png',
+       route:'/ox/?type=โคแม่พันธุ์',
+       color:'border-pink-500'
+     },
+      {
+       name:'โคแรกเกิด',
+       text:'เพิ่ม แก้ไข รายการโคขุนในฟาร์ม',
+       icon:'019-cow.png',
+       route:'/ox/?type=โคแรกเกิด',
+       color:'border-blue-500'
      },
      {
        name:'โคขุน',
        text:'เพิ่ม แก้ไข รายการโคขุนในฟาร์ม',
        icon:'019-cow.png',
-       route:'/ox/'
-     },{
+       route:'/ox/?type=โคขุน',
+       color:'border-green-500'
+     },
+     {
        name:'การจำหน่าย',
        text:'นำโคขุนในฟาร์มจำหน่ายออก',
        icon:'040-chariot.png',
-       route:'/sell/'
+       route:'/sell/',
+       color:'border-green-500'
      },{
        name:'องค์ความรู้',
        text:'คลังข้อมูลความรู้สำหรับการเลี้ยงโคขุน',
        icon:'044-smart.png',
-       route:'/knowledge/'
+       route:'/knowledge/',
+       color:'border-green-500'
      },
      {
        name:'การเงิน',
        text:'จัดการข้อมูลรายรับรายจ่าย',
        icon:'wallet.png',
-       route:'/money/'
+       route:'/money/',
+       color:'border-green-500'
      },
      {
        name:'รายงาน',
        text:'ข้อมูลสรุปรายระเอียดต่างๆ',
        icon:'business-report.png',
-       route:'/report/'
+       route:'/report/',
+       color:'border-green-500'
      },
    ]
   user:any = {}

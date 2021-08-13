@@ -3,7 +3,7 @@
     <v-toolbar flat>
         <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon> <h2 class="ml-2 text-xl font-bold text-blue-400">รายการโคขุนของคุณ</h2>
         <v-spacer></v-spacer>
-        <v-btn @click="$router.push('/ox/create')" rounded color="primary">สร้าง</v-btn>
+        <v-btn @click="$router.push(`/ox/create/?type=${$route.query.type}`)" rounded color="primary">สร้าง</v-btn>
     </v-toolbar>
 
     <div v-for="ox,index in oxen" :key="index">
@@ -32,7 +32,7 @@ export default class Farm extends Vue {
 
     async getOxen() {
         let user = await Auth.getUser()
-        this.oxen = await Core.getHttp(`/api/v1/ox/ox/?&status=อยู่ในฟาร์ม&user=${user.id}`)
+        this.oxen = await Core.getHttp(`/api/v1/ox/ox/?sex=${this.$route.query.type}&status=อยู่ในฟาร์ม&user=${user.id}`)
     }
 
     async created() {
