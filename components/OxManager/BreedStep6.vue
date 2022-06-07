@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pre>{{ breed }}</pre>
+    <!-- <pre>{{ breed }}</pre> -->
     <v-text-field
       type="date"
       label="วัน/เดือน/ปี ที่คลอดจริง"

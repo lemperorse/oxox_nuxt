@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>step2</h1>
-    <pre>{{ breed }}</pre>
+    <!-- <pre>{{ breed }}</pre> -->
     <v-text-field
       type="date"
       label="วัน/เดือน/ปี ที่แสดงอาการเป็นสัด"

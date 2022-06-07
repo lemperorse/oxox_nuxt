@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>step1</h1>
-    <pre>{{ breed }}</pre>
+    <!-- <pre>{{ breed }}</pre> -->
     <v-select
       :items="['เหนี่ยวนำ', 'ไม่เหนี่ยวนำ']"
       item-text="name"
