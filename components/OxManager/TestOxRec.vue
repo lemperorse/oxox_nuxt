@@ -5,7 +5,7 @@
         <v-text-field dense class="p-2" type="number" label="อายุ (ปี)" v-model="form.age_age" prepend-inner-icon="mdi-calendar"></v-text-field>
         <v-text-field dense class="p-2" type="number" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today"></v-text-field>
         <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
-        <v-select v-model="chooseKg" dense class="p-2" :items=[0.4,0.6,0.8,1.0] label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-select>
+        <v-text-field v-model="chooseKg" dense class="p-2" type="number" label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
         <!-- <v-btn class="w-full" rounded large @click="calculate()" color="success">คำนวณ</v-btn> -->
         <v-btn class="w-full" rounded large type="submit" color="success">คำนวณ</v-btn>
     </form>
