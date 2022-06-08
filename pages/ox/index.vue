@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-toolbar flat>
-        <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon> <h2 class="ml-2 text-xl font-bold text-blue-400">รายการโคขุนของคุณ</h2>
+        <v-icon @click="$router.go('-1')">mdi-arrow-left</v-icon> <h2 class="ml-2 text-xl font-bold text-blue-400">{{$route.query.type}}</h2>
         <v-spacer></v-spacer>
         <v-btn @click="$router.push(`/ox/create/?type=${$route.query.type}`)" rounded color="primary">สร้าง</v-btn>
     </v-toolbar>

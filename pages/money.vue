@@ -32,14 +32,12 @@
                         {'text': 'ค่ายา/วัคซีน' , value:'ค่ายา/วัคซีน'},
                         {'text': 'ค่าอาหารข้น' , value:'ค่าอาหารข้น'},
                         {'text': 'ค่าอาหารหยาบ' , value:'ค่าอาหารหยาบ'},
-                        {'text': 'ค่าเสื่อมโรงงาน' , value:'ค่าเสื่อมโรงงาน'},
+                        {'text': 'ค่าโรงงาน' , value:'ค่าโรงงาน'},
                         {'text': 'ค่าก่อสร้าง' , value:'ค่าก่อสร้าง'},
-                        {'text': 'ค่าอุปกรณ์' , value:'ค่าอุปกรณ์'},
-                        {'text': 'ค่าดอกเบี้ย' , value:'ค่าดอกเบี้ย'},
-                        {'text': 'ค่าเช่าที่ดิน' , value:'ค่าเช่าที่ดิน'},
+                        {'text': 'ค่าอุปกรณ์ทั่วไป' , value:'ค่าอุปกรณ์ทั่วไป'},
                         {'text': 'อื่น ๆ' , value:'อื่นๆ'},
                     ]" v-model="form.name" label="รายจ่าย..." prepend-inner-icon="mdi-credit-card-minus-outline" />
-                    <v-text-field label="อื่นๆ " v-if="form.name == 'อื่นๆ'" prepend-inner-icon="mdi-grass" />
+                    <!-- <v-text-field label="อื่นๆ " v-if="form.name == 'อื่นๆ'" prepend-inner-icon="mdi-grass" /> -->
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
 
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
