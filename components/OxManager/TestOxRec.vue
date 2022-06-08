@@ -19,7 +19,7 @@
             <v-card-text v-if="dialog">
                 <div class="p-4">
                     <v-text-field v-model="chooseKg" label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
-                    <v-text-field v-model="data.g" label="โปรตีน (%)" prepend-inner-icon="mdi-egg-outline"></v-text-field>
+                    <v-text-field v-model="data.g" label="โปรตีน (กรัม)" prepend-inner-icon="mdi-egg-outline"></v-text-field>
                     <v-text-field v-model="data.kg" label="พลังงาน (kcal/kg)" prepend-inner-icon="mdi-rice"></v-text-field>
                     <v-text-field v-model="data.cal" label="แคลเซี่ยม (%)" prepend-inner-icon="mdi-bone"></v-text-field>
                     <v-text-field v-model="data.fos" label="ฟอสฟอรัส (%)" prepend-inner-icon="mdi-food"></v-text-field>
