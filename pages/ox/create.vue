@@ -19,26 +19,29 @@
 
             <v-select dense class="p-2" :items="choices.origin" item-text="name" item-value="id" label="แหล่งที่มา" v-model="form.origin" prepend-inner-icon="mdi-redhat" />
             <v-text-field v-if="form.origin == 5" dense class="p-2" label="แหล่งที่มาอื่นๆ" v-model="form.origin_ect" prepend-inner-icon="mdi-redhat" />
-            
+
             <v-select dense class="p-2" :items="choices.tooth" item-text="name" item-value="id" label="ฟัน" v-model="form.tooth" prepend-inner-icon="mdi-tooth-outline" />
-            <v-text-field dense class="p-2" type="text" label="อายุจากการทำนายฟัน"   v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
+            <v-text-field dense class="p-2" type="text" label="อายุจากการทำนายฟัน" v-model="form.age_predict" prepend-inner-icon="mdi-calendar-edit" />
 
             <v-text-field required dense class="p-2" type="date" label="วันเกิด" v-model="form.birth_date" prepend-inner-icon="mdi-calendar" />
             <!-- <v-text-field required dense class="p-2" type="number" label="จำนวน(ซี่)" v-model="form.tooth_count" prepend-inner-icon="mdi-tooth" /> -->
             <v-text-field dense class="p-2" type="number" label="อายุ" v-model="form.age_age" prepend-inner-icon="mdi-calendar-heart" />
             <v-text-field dense class="p-2" type="number" label="เดือน" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today" />
 
-            <!-- <v-text-field dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" v-if="form.sex == 'โคขุน'" prepend-inner-icon="mdi-calendar-star" /> -->
+            <v-text-field v-if="$route.query.type == 'โคขุน'" dense class="p-2" type="date" label="วันที่เข้าขุน" v-model="form.fatten_date" prepend-inner-icon="mdi-calendar-star" />
+
             <div class="flex  p-2">
                 <v-text-field dense class="" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" />
-                <v-btn class="-mt-2" small fab @click="form.weight = form.breast*2.23" color="primary">คำนวน</v-btn>
+                <v-btn  v-if="$route.query.type == 'โคขุน'"  class="-mt-2" small fab @click="form.weight = form.breast*2.23" color="primary">คำนวน</v-btn>
             </div>
             <!-- <v-text-field dense class="p-2" type="number" label="รอบอก (เซนติเมตร)" v-model="form.breast" prepend-inner-icon="mdi-panorama-wide-angle" /> -->
             <v-text-field dense class="p-2" type="number" label="ความสูง (เซนติเมตร)" v-model="form.height" prepend-inner-icon="mdi-panorama-vertical" />
             <v-text-field dense class="p-2" type="number" label="ความยาวลำตัว (เซนติเมตร)" v-model="form.long" prepend-inner-icon="mdi-pan-horizontal" />
-            <!-- <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" /> -->
+
+            <v-text-field v-if="$route.query.type == 'โคขุน'" dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
+
             <v-text-field dense class="p-2" type="date" label="วัน/เดือน/ปีที่ซื้อ" v-model="form.buy_date" prepend-inner-icon="mdi-calendar-check-outline" />
-            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" prepend-inner-icon="mdi-tag" /> 
+            <v-text-field dense class="p-2" type="number" label="ราคา" v-model="form.price" prepend-inner-icon="mdi-tag" />
             <!-- <v-select dense class="p-2" :items="choices.bsc" item-text="name" item-value="id" label="ประเมินคะแนนสภาพร่างกาย (BCS)" v-model="form.bsc" prepend-inner-icon="mdi-scoreboard-outline" /> -->
 
             <div class="flex  p-2">
@@ -76,7 +79,7 @@
 
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
         </form>
-      
+
     </v-container>
 </div>
 </template>
@@ -87,8 +90,12 @@ import {
     Vue,
     Watch,
 } from "nuxt-property-decorator"
-import { Core } from '@/vuexes/core'
-import { Auth } from '@/vuexes/auth'
+import {
+    Core
+} from '@/vuexes/core'
+import {
+    Auth
+} from '@/vuexes/auth'
 import moment from "moment";
 import _ from 'lodash'
 @Component({
@@ -96,17 +103,17 @@ import _ from 'lodash'
     components: {},
 })
 export default class Farm extends Vue {
- 
+
     oxen: any = null
     form: any = {
-        sex : this.$route.query.type
+        sex: this.$route.query.type
     }
     group: any = null
     dialog: boolean = false;
     choices: any = {}
 
     toothVal: any = {}
-    SEX:any = this.$route.query.type
+    SEX: any = this.$route.query.type
 
     async getEnv() {
 
@@ -134,8 +141,10 @@ export default class Farm extends Vue {
     }
 
     @Watch('form.tooth')
-    async onChangeAge(val: string) { 
-        let tooth:any = _.find(this.choices.tooth,{id:val}) 
+    async onChangeAge(val: string) {
+        let tooth: any = _.find(this.choices.tooth, {
+            id: val
+        })
         this.form.age_predict = tooth.age_val
     }
 
@@ -147,7 +156,7 @@ export default class Farm extends Vue {
         this.form.status = "อยู่ในฟาร์ม";
         this.form.user = this.user.id
         let ox = await Core.postHttp(`/api/v1/ox/ox/`, this.form)
-        if(ox.id){
+        if (ox.id) {
             alert('บันทึกข้อมูลสำเร็จ')
             await this.$router.go(-1)
 

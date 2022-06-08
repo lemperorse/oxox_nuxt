@@ -23,7 +23,7 @@
             <v-text-field required dense class="p-2" type="number" label="รหัสไปรษณีย์" v-model="form.zipcode" prepend-inner-icon="mdi-post-outline" />
 
             <v-select required dense class="p-2" :items="groups" item-text="name" item-value="id" label="กลุ่ม" v-model="form.farm_group" prepend-inner-icon="mdi-account-group" />
-            <v-text-field v-if="form.farm_group == 8 "  required dense class="p-2" type="number" label="ระบุชื่อวิสาหกิจชุมชนกลุ่มอื่น ๆ" v-model="form.farm_group_other" prepend-inner-icon="mdi-account-group" />
+            <v-text-field v-if="form.farm_group == 199 "  required dense class="p-2" type="text" label="ระบุชื่อวิสาหกิจชุมชนกลุ่มอื่น ๆ" v-model="form.farm_group_other" prepend-inner-icon="mdi-account-group" />
             <v-btn type='submit' rounded block large color='success'>บันทึก</v-btn>
         </form>
     </v-container>

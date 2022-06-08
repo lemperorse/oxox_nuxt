@@ -8,7 +8,7 @@
         </v-card-title>
         <v-card-text>
           <form @submit.prevent="login()">
-            <v-text-field required v-model="form.username" filled label="ชื่อผู้ใช้ หรือ เบอร์โทรศัพท์" rounded prepend-inner-icon="mdi-face"></v-text-field>
+            <v-text-field required v-model="form.username" filled label="ชื่อผู้ใช้ หรือ เบอร์โทรศัพท์" rounded prepend-inner-icon="mdi-account"></v-text-field>
             <v-text-field required v-model="form.password" type="password" filled label="รหัสผ่าน" rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
             <v-btn depressed large color="success" class="w-full" type="submit" rounded>เข้าสู่ระบบ</v-btn>
             <br><br>

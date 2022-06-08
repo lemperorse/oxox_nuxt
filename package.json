@@ -8,7 +8,9 @@
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "deploy": "gh-pages -d dist",
-    "upload": "npm run build && npm run generate &&  gh-pages -d dist -t true"
+    "upload": "npm run build && npm run generate &&  gh-pages -d dist -t true",
+    "dev:host": "nuxt --hostname 192.168.1.14 --port 3000"
+
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",

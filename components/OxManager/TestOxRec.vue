@@ -5,7 +5,7 @@
         <v-text-field dense class="p-2" type="number" label="อายุ (ปี)" v-model="form.age_age" prepend-inner-icon="mdi-calendar"></v-text-field>
         <v-text-field dense class="p-2" type="number" label="อายุ (เดือน)" v-model="form.age_month" prepend-inner-icon="mdi-calendar-today"></v-text-field>
         <v-text-field dense class="p-2" type="number" label="น้ำหนักเข้าขุน (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
-        <v-text-field v-model="chooseKg" dense class="p-2" type="number" label="ปริมาณอาหารที่ให้" prepend-inner-icon="mdi-scale-balance"></v-text-field>
+        <v-text-field v-model="chooseKg" dense class="p-2"  label="ปริมาณอาหารที่ให้ (กิโลกรัม)"  prepend-inner-icon="mdi-scale-balance"></v-text-field>
         <!-- <v-btn class="w-full" rounded large @click="calculate()" color="success">คำนวณ</v-btn> -->
         <v-btn class="w-full" rounded large type="submit" color="success">คำนวณ</v-btn>
     </form>
@@ -14,7 +14,7 @@
             <v-card-title primary-title>
                 <p class="text-xl text-blue-400 font-bold mt-4">คำแนะนำ</p>
                 <v-spacer></v-spacer>
-                <v-btn @click="(form = {})&&(dialog=false)" color="error" fab small>x</v-btn>
+                <v-btn @click="(dialog=false)" color="error" fab small>x</v-btn>
             </v-card-title>
             <v-card-text v-if="dialog">
                 <div class="p-4">

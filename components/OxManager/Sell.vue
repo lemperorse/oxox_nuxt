@@ -22,8 +22,8 @@
             </v-card-title>
             <v-card-text v-if="dialog">
                 <form @submit.prevent="(form.id)?updateData():saveData()">
-
-                    <v-text-field type="date" label="วัน/เดือน/ปีที่จำหน่าย" v-model="form.date" prepend-inner-icon="mdi-calendar" />
+        
+                    <v-text-field @input="calDate()" type="date" label="วัน/เดือน/ปีที่จำหน่าย" v-model="form.date" prepend-inner-icon="mdi-calendar" />
                     <v-text-field type="number" label="สรุปจำนวนวันที่เลี้ยง" v-model="form.date_count" prepend-inner-icon="mdi-calendar-edit" />
                     <v-text-field type="number" label="น้ำหนักที่จำหน่าย (กิโลกรัม)" v-model="form.weight" prepend-inner-icon="mdi-scale" />
 
@@ -56,6 +56,7 @@ import { Auth } from '@/vuexes/auth'
 import { Web } from '@/vuexes/web'
 const api = '/api/v1/ox_manager'
 const tool = '/api/v1/tool'
+import moment from 'moment'
 @Component({
 
     components: {},
@@ -79,6 +80,15 @@ export default class Food extends Vue {
         this.lists = await Core.getHttp(`${api}/sell/?ox=${this.currentId}`)
         this.response = true;
 
+    }
+
+    async calDate(){
+        var given = moment(this.form.date, "YYYY-MM-DD");
+        var current = moment().startOf('day');
+
+        //Difference in number of days
+       let count =  moment.duration(given.diff(current)).asDays();
+       this.form.date_count = count 
     }
 
     async saveData() {

@@ -26,7 +26,8 @@
                         {'text': 'ขายมูล' , value:'ขายมูล'},
                         {'text': 'อื่น ๆ' , value:'อื่นๆ'},
                     ]" v-model="form.name" label="รายรับจาก..." prepend-inner-icon="mdi-credit-card-plus-outline" />
-                    <v-select v-if="form.type == false" :items="[
+                    
+                    <v-autocomplete v-if="form.type == false" :items="[
                         {'text': 'ค่าพันธุ์สัตว์' , value:'ค่าพันธุ์สัตว์'} ,
                         {'text': 'ค่าจ้างแรงงาน' , value:'ค่าจ้างแรงงาน'},
                         {'text': 'ค่ายา/วัคซีน' , value:'ค่ายา/วัคซีน'},
@@ -37,7 +38,8 @@
                         {'text': 'ค่าอุปกรณ์ทั่วไป' , value:'ค่าอุปกรณ์ทั่วไป'},
                         {'text': 'อื่น ๆ' , value:'อื่นๆ'},
                     ]" v-model="form.name" label="รายจ่าย..." prepend-inner-icon="mdi-credit-card-minus-outline" />
-                    <!-- <v-text-field label="อื่นๆ " v-if="form.name == 'อื่นๆ'" prepend-inner-icon="mdi-grass" /> -->
+                
+                    <v-text-field v-model="form.name_other"  label="อื่นๆ "  v-if="form.name == 'อื่นๆ'" prepend-inner-icon="mdi-grass" />
                     <v-text-field label="จำนวนเงิน" type="number" v-model="form.value" prepend-inner-icon="mdi-card-text-outline" />
 
                     <v-btn type='submit' block rounded large color='success'>บันทึก</v-btn>
@@ -104,6 +106,7 @@ export default class MyComponent extends Vue {
     dialog: boolean = false
     form: any = {}
     date: any = ''
+    oth:string = ''
     user: any = {}
     response: boolean = false;
 
@@ -141,6 +144,8 @@ export default class MyComponent extends Vue {
 
     async saveData() {
         this.form.user = this.user.id
+      
+       
         let save = await Core.postHttp(`/api/v1/farmer/income/`, this.form)
         if (save.id) {
             alert('บันทึกข้อมูลสำเร็จแล้ว')
