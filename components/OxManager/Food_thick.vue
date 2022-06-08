@@ -27,9 +27,9 @@
                       <v-select :items="['แบบเต็มที่','แบบจำกัด']" item-text="name" item-value="id" label="ระบบการให้อาหาร" v-model="form.fedding_system" prepend-inner-icon="mdi-scale-balance" />
                     <v-text-field required label="อาหารข้น (กก./ตัว/วัน)" v-model="form.food" prepend-inner-icon="mdi-rice" />
                     <h2 class="mt-4">โภชนะ</h2>
-                    <v-text-field required type="number" label="โปรตีน (%)" v-model="form.protien" prepend-inner-icon="mdi-scale-bathroom" />  
-                    <v-text-field required type="number" label="พลังงาน" v-model="form.energy" prepend-inner-icon="mdi-hydro-power" />  
-                    <v-text-field required type="number" label="ไขมัน (%)" v-model="form.fat" prepend-inner-icon="mdi-water" />  
+                    <v-text-field type="number" label="โปรตีน (%)" v-model="form.protien" prepend-inner-icon="mdi-scale-bathroom" />  
+                    <v-text-field type="number" label="พลังงาน" v-model="form.energy" prepend-inner-icon="mdi-hydro-power" />  
+                    <v-text-field type="number" label="ไขมัน (%)" v-model="form.fat" prepend-inner-icon="mdi-water" />  
                     <v-btn rounded class="w-full" type="submit" large color='success'>บันทึก</v-btn>
                      <v-btn class="w-full mt-4" dark v-if="form.id" @click="removeData()" color='red' rounded large>ลบ</v-btn>
                 </form>
