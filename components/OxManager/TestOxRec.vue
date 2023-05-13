@@ -67,9 +67,9 @@ export default class MyComponent extends Vue {
 
     async calculate() {
         let rang = _.find(this.ranges, (data) => {
-            return (this.form.weight >= data.weight) && (this.form.weight <= data.weight_max) && (data.kg == this.chooseKg)
-        })
-        this.data = rang;
+            return (Number(this.form.weight) >= Number(data.weight)) && (Number(this.form.weight) <= Number(data.weight_max)) && (Number(data.kg) == Number(this.chooseKg))
+        }) 
+        this.data = (rang)?rang:{};
         this.dialog = true;
         console.log(rang);
     }
